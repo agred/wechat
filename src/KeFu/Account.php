@@ -22,7 +22,7 @@ class Account extends BaseApi
      */
     public function add($access_token, $name, $media_id)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/kf/account/add/';
+        $api_url = self::OPEN_API . '/cgi-bin/kf/account/add';
         $params = [
             'access_token' => $access_token
         ];
@@ -44,7 +44,7 @@ class Account extends BaseApi
      */
     public function update($access_token, $open_kfid, $name, $media_id)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/kf/account/update/';
+        $api_url = self::OPEN_API . '/cgi-bin/kf/account/update';
         $params = [
             'access_token' => $access_token
         ];
@@ -65,7 +65,7 @@ class Account extends BaseApi
      */
     public function del($access_token, $open_kfid)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/kf/account/del/';
+        $api_url = self::OPEN_API . '/cgi-bin/kf/account/del';
         $params = [
             'access_token' => $access_token
         ];
@@ -83,7 +83,7 @@ class Account extends BaseApi
      */
     public function list($access_token)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/kf/account/list/';
+        $api_url = self::OPEN_API . '/cgi-bin/kf/account/list';
         $params = [
             'access_token' => $access_token
         ];
@@ -100,7 +100,7 @@ class Account extends BaseApi
      */
     public function add_contact_way($access_token, $open_kfid, $scene = '123456')
     {
-        $api_url = self::OPEN_API . '/cgi-bin/kf/add_contact_way/';
+        $api_url = self::OPEN_API . '/cgi-bin/kf/add_contact_way';
         $params = [
             'access_token' => $access_token
         ];

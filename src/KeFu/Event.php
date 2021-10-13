@@ -23,7 +23,7 @@ class Event extends BaseApi
      */
     public function sync_msg($access_token, $cursor, $token, $limit = 1000)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/kf/sync_msg/';
+        $api_url = self::OPEN_API . '/cgi-bin/kf/sync_msg';
         $params = [
             'access_token' => $access_token
         ];
@@ -44,7 +44,7 @@ class Event extends BaseApi
      */
     public function send_msg($access_token, $data = [])
     {
-        $api_url = self::OPEN_API . '/cgi-bin/kf/send_msg/';
+        $api_url = self::OPEN_API . '/cgi-bin/kf/send_msg';
         $params = [
             'access_token' => $access_token
         ];
@@ -62,7 +62,7 @@ class Event extends BaseApi
      */
     public function send_msg_on_event($access_token, $code, $msgid, $msgtype)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/kf/send_msg_on_event/';
+        $api_url = self::OPEN_API . '/cgi-bin/kf/send_msg_on_event';
         $params = [
             'access_token' => $access_token
         ];

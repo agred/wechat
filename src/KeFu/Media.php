@@ -22,7 +22,7 @@ class Media extends BaseApi
      */
     public function upload($access_token, $type, $file)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/media/upload/?access_token=' . $access_token . '&type=' . $type;
+        $api_url = self::OPEN_API . '/cgi-bin/media/upload?access_token=' . $access_token . '&type=' . $type;
         return $this->https_byte($api_url, $file);
     }
 
@@ -35,7 +35,7 @@ class Media extends BaseApi
      */
     public function get($access_token, $media_id)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/media/get/';
+        $api_url = self::OPEN_API . '/cgi-bin/media/get';
         $params = [
             'access_token' => $access_token,
             'media_id' => $media_id

@@ -19,7 +19,7 @@ class Oauth extends BaseApi
      */
     public function access_token()
     {
-        $api_url = self::OPEN_API . '/cgi-bin/gettoken/';
+        $api_url = self::OPEN_API . '/cgi-bin/gettoken';
         return $this->https_get($api_url);
     }
 
