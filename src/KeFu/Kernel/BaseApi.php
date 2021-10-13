@@ -59,14 +59,13 @@ class BaseApi
         return json_decode($result, true);
     }
 
-    public function https_post($url, $params = [], $data = [], $header = true){
-        $header = $header ? ['Accept:application/json' , 'Content-Type:multipart/form-data'] : [];
+    public function https_post($url, $params = [], $data = []){
         $params['corpid'] = $this->corpid;
         $params['corpsecret'] = $this->corpsecret;
         if($params){
             $url = $url . '?' . http_build_query($params);
         }
-        $result = $this->https_request($url, $data, $header);
+        $result = $this->https_request($url, $data);
         return json_decode($result, true);
     }
 

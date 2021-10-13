@@ -3,15 +3,16 @@
 use KeFu\Kernel\DataArray;
 
 /**
- * Class Ks
+ * Class Kf
  * @package KeFu
  *
  * @method \KeFu\Oauth Oauth($options = []) static 授权凭证
- * @method \KeFu\User User($options = []) static 用户操作
- * @method \KeFu\Video Video($options = []) static 视频操作
- * @method \KeFu\Data Data($options = []) static 数据开放服务
+ * @method \KeFu\Account Account($options = []) static 用户操作
+ * @method \KeFu\Event Event($options = []) static 客服消息
+ * @method \KeFu\Media Media($options = []) static 素材管理
+ * @method \KeFu\Other Other($options = []) static 其他信息
  */
-class Ks
+class Kf
 {
 
     /**
