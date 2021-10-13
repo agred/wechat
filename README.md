@@ -1,7 +1,7 @@
 # 说明
-<a href="https://open.kuaishou.com/" target="_blank">开放平台官网</a>
+<a href="https://open.work.weixin.qq.com/kf/doc/" target="_blank">微信客服API</a>
 ```
-快手开放平台sdk-dev
+微信客服APIsdk-dev
 ```
 # 使用
 ```
