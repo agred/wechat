@@ -1,0 +1,22 @@
+{
+    "name": "agred/wechat",
+    "description": "test",
+    "type": "yes",
+    "require": {
+        "php": ">=7.0"
+    },
+    "license": "Mit",
+    "authors": [
+        {
+            "name": "agred",
+            "email": "agred@163.com"
+        }
+    ],
+    "autoload" : {
+        "psr-4": {
+            "KeFu\\" : "src/KeFu/"
+        },
+        "files": ["Kf.php","functions.php"]
+    },
+    "minimum-stability": "dev"
+}
