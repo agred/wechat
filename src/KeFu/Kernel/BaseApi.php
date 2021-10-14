@@ -101,7 +101,7 @@ class BaseApi
             . $payload . "\r\n"
             . "--__X_PAW_BOUNDARY__\r\n"
             . "Content-Type: video/mp4\r\n"
-            . "Content-Disposition: form-data; name=\"file\"; filename=\"test.mp4\"\r\n"
+            . "Content-Disposition: form-data; name=\"media\"; filename=\"wework.txt\"\r\n"
             . "\r\n"
             . file_get_contents($file) . "\r\n"
             . "--__X_PAW_BOUNDARY__--";
