@@ -40,7 +40,7 @@ class Media extends BaseApi
             'access_token' => $access_token,
             'media_id' => $media_id
         ];
-        return $this->https_get($api_url, $params);
+        return $this->https_file($api_url, $params);
     }
 
 }
