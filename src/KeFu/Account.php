@@ -30,7 +30,7 @@ class Account extends BaseApi
             'name' => $name,
             'media_id' => $media_id
         ];
-        return $this->https_post($api_url, $params, $data);
+        return $this->https_post($api_url, $params, json_encode($data));
     }
 
     /**
@@ -53,7 +53,7 @@ class Account extends BaseApi
             'name' => $name,
             'media_id' => $media_id
         ];
-        return $this->https_post($api_url, $params, $data);
+        return $this->https_post($api_url, $params, json_encode($data));
     }
 
     /**
@@ -72,7 +72,7 @@ class Account extends BaseApi
         $data = [
             'open_kfid' => $open_kfid
         ];
-        return $this->https_post($api_url, $params, $data);
+        return $this->https_post($api_url, $params, json_encode($data));
     }
 
     /**
@@ -108,7 +108,7 @@ class Account extends BaseApi
             'open_kfid' => $open_kfid,
             'scene' => $scene
         ];
-        return $this->https_post($api_url, $params, $data);
+        return $this->https_post($api_url, $params, json_encode($data));
     }
 
 }
