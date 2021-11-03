@@ -81,7 +81,7 @@ class Account extends BaseApi
      * @url https://open.work.weixin.qq.com/kf/doc/92512/93143/94746
      * @param string $access_token
      */
-    public function list($access_token)
+    public function get_list($access_token)
     {
         $api_url = self::OPEN_API . '/cgi-bin/kf/account/list';
         $params = [
