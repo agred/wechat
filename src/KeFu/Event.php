@@ -32,7 +32,7 @@ class Event extends BaseApi
             'token' => $token,
             'limit' => $limit
         ];
-        return $this->https_post($api_url, $params, $data);
+        return $this->https_post($api_url, $params, json_encode($data));
     }
 
     /**
@@ -48,7 +48,7 @@ class Event extends BaseApi
         $params = [
             'access_token' => $access_token
         ];
-        return $this->https_post($api_url, $params, $data);
+        return $this->https_post($api_url, $params, json_encode($data));
     }
 
     /**
@@ -71,7 +71,7 @@ class Event extends BaseApi
             'msgid' => $msgid,
             'msgtype' => $msgtype
         ];
-        return $this->https_post($api_url, $params, $data);
+        return $this->https_post($api_url, $params, json_encode($data));
     }
 
 }
