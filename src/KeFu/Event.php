@@ -48,7 +48,7 @@ class Event extends BaseApi
         $params = [
             'access_token' => $access_token
         ];
-        return $this->https_post($api_url, $params, json_encode($data));
+        return $this->https_post($api_url, $params, json_encode($data, JSON_UNESCAPED_UNICODE));
     }
 
     /**
@@ -56,22 +56,15 @@ class Event extends BaseApi
      * @Scope
      * @url https://open.work.weixin.qq.com/kf/doc/92512/93143/95123
      * @param string $access_token
-     * @param string $code
-     * @param string $msgid
-     * @param string $msgtype
+     * @param array $data
      */
-    public function send_msg_on_event($access_token, $code, $msgid, $msgtype)
+    public function send_msg_on_event($access_token, $data)
     {
         $api_url = self::OPEN_API . '/cgi-bin/kf/send_msg_on_event';
         $params = [
             'access_token' => $access_token
         ];
-        $data = [
-            'code' => $code,
-            'msgid' => $msgid,
-            'msgtype' => $msgtype
-        ];
-        return $this->https_post($api_url, $params, json_encode($data));
+        return $this->https_post($api_url, $params, json_encode($data, JSON_UNESCAPED_UNICODE));
     }
 
 }
