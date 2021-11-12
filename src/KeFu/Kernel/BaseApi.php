@@ -10,7 +10,7 @@ namespace KeFu\Kernel;
 class BaseApi
 {
 
-    const SDK_VER = '1.0.3';
+    const SDK_VER = '1.0.4';
 
     const OPEN_API  = "https://qyapi.weixin.qq.com";
     public $corpid    = null;
