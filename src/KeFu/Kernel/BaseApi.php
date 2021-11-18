@@ -10,7 +10,7 @@ namespace KeFu\Kernel;
 class BaseApi
 {
 
-    const SDK_VER = '1.0.4';
+    const SDK_VER = '1.0.5';
 
     const OPEN_API  = "https://qyapi.weixin.qq.com";
     public $corpid    = null;
@@ -112,6 +112,44 @@ class BaseApi
         $output = curl_exec($curl);
         curl_close($curl);
         return json_decode($output, true);
+    }
+
+    public function upload_byte($url, $file)
+    {
+        $payload = '';
+        $params = "--__X_PAW_BOUNDARY__\r\n"
+            . "Content-Type: application/x-www-form-urlencoded\r\n"
+            . "\r\n"
+            . $payload . "\r\n"
+            . "--__X_PAW_BOUNDARY__\r\n"
+            . "Content-Type: video/mp4\r\n"
+            . "Content-Disposition: form-data; name=\"media\"; filename=\"test.mp4\"\r\n"
+            . "\r\n"
+            . file_get_contents($file) . "\r\n"
+            . "--__X_PAW_BOUNDARY__--";
+
+        $first_newline = strpos($params, "\r\n");
+        $multipart_boundary = substr($params, 2, $first_newline - 2);
+        $request_headers = array();
+        $request_headers[] = 'Content-Length: ' . strlen($params);
+        $request_headers[] = 'Content-Type: multipart/form-data; boundary=' . $multipart_boundary;
+
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
+        curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $request_headers);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
+        if (defined('CURLOPT_IPRESOLVE') && defined('CURL_IPRESOLVE_V4')) {
+            curl_setopt($curl, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+        }
+        $output = curl_exec($curl);
+        curl_close($curl);
+
+        $result = json_decode($output, true);
+        return $result['data'];
     }
 
 }
