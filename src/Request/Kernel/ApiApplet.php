@@ -3,24 +3,24 @@
 namespace Request\Kernel;
 
 /**
- * 客服内核
- * Class BaseApi
+ * 小程序内核
+ * Class ApiApplet
  * @package Request\Kernel
  */
-class KfApi
+class ApiApplet
 {
-    const SDK_VER = '1.0.6';
+    const SDK_VER = '1.0.1';
 
-    const QY_API = "https://qyapi.weixin.qq.com";
-    public $corpid    = null;
-    public $corpsecret = null;
+    const APP_API = "https://api.weixin.qq.com";
+    public $appId    = null;
+    public $appSecret = null;
 
     public $response = null;
 
     public function __construct($config)
     {
-        $this->corpid = $config['corpid'];
-        $this->corpsecret = $config['corpsecret'];
+        $this->appId = $config['appid'];
+        $this->appSecret = $config['appSecret'];
     }
 
     public function toArray()
@@ -30,8 +30,8 @@ class KfApi
 
     public function https_curl($url, $data = [])
     {
-        $data['corpid'] = $this->corpid;
-        $data['corpsecret'] = $this->corpsecret;
+        $data['appid'] = $this->appId;
+        $data['secret'] = $this->appSecret;
         if($data){
             $url = $url . '?' . http_build_query($data);
         }
@@ -40,8 +40,8 @@ class KfApi
     }
 
     public function https_file($url , $params = []){
-        $params['corpid'] = $this->corpid;
-        $params['corpsecret'] = $this->corpsecret;
+        $params['appid'] = $this->appId;
+        $params['secret'] = $this->appSecret;
         if($params){
             $url = $url . '?' . http_build_query($params);
         }
@@ -49,8 +49,8 @@ class KfApi
     }
 
     public function https_get($url , $params = []){
-        $params['corpid'] = $this->corpid;
-        $params['corpsecret'] = $this->corpsecret;
+        $params['appid'] = $this->appId;
+        $params['secret'] = $this->appSecret;
         if($params){
             $url = $url . '?' . http_build_query($params);
         }
@@ -59,8 +59,8 @@ class KfApi
     }
 
     public function https_post($url, $params = [], $data = []){
-        $params['corpid'] = $this->corpid;
-        $params['corpsecret'] = $this->corpsecret;
+        $params['appid'] = $this->appId;
+        $params['secret'] = $this->appSecret;
         if($params){
             $url = $url . '?' . http_build_query($params);
         }
@@ -88,6 +88,9 @@ class KfApi
         }
         $output = curl_exec($curl);
         curl_close($curl);
+        if (!is_null(json_decode($output))) {
+            $output = json_decode($output, true);
+        }
         return ($output);
     }
 

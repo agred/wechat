@@ -2,14 +2,14 @@
 
 namespace Request\KeFu;
 
-use Request\Kernel\KfApi;
+use Request\Kernel\ApiKeFu;
 
 /**
  * 客服消息
- * Class KfEvent
+ * Class Event
  * @package Request
  */
-class KfEvent extends KfApi
+class Event extends ApiKeFu
 {
     /**
      * @title 获取消息

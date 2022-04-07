@@ -2,14 +2,14 @@
 
 namespace Request\Applet;
 
-use Request\Kernel\AppApi;
+use Request\Kernel\ApiApplet;
 
 /**
  * 调用凭证
- * Class AppOauth
+ * Class Oauth
  * @package Request
  */
-class AppOauth extends AppApi
+class Oauth extends ApiApplet
 {
     /**
      * @title 登录凭证校验。通过 wx.login 接口获得临时登录凭证 code 后传到开发者服务器调用此接口完成登录流程。

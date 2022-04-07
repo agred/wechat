@@ -2,14 +2,14 @@
 
 namespace Request\Applet;
 
-use Request\Kernel\AppApi;
+use Request\Kernel\ApiApplet;
 
 /**
  * 消息处理
- * Class AppMessage
+ * Class Message
  * @package Request
  */
-class AppMessage extends AppApi
+class Message extends ApiApplet
 {
     /**
      * @title 发送订阅消息

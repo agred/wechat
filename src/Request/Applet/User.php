@@ -2,14 +2,14 @@
 
 namespace Request\Applet;
 
-use Request\Kernel\AppApi;
+use Request\Kernel\ApiApplet;
 
 /**
  * 用户信息
- * Class AppUser
+ * Class User
  * @package Request
  */
-class AppUser extends AppApi
+class User extends ApiApplet
 {
     /**
      * @title 检查加密信息是否由微信生成（当前只支持手机号加密数据），只能检测最近3天生成的加密数据

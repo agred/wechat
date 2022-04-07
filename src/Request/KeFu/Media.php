@@ -2,14 +2,14 @@
 
 namespace Request\KeFu;
 
-use Request\Kernel\KfApi;
+use Request\Kernel\ApiKeFu;
 
 /**
  * 素材管理
- * Class KfMedia
+ * Class Media
  * @package Request
  */
-class KfMedia extends KfApi
+class Media extends ApiKeFu
 {
     /**
      * @title 上传临时素材

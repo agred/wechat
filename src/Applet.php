@@ -3,19 +3,14 @@
 use Request\Kernel\DataArray;
 
 /**
- * Class Wechat
+ * Class Applet
  * @package Request
  *
- * @method \Request\Applet\AppOauth AppOauth($options = []) static 小程序调用凭证
- * @method \Request\Applet\AppUser AppUser($options = []) static 小程序用户信息
- * @method \Request\Applet\AppMessage AppMessage($options = []) static 小程序消息处理
- * @method \Request\KeFu\KfOauth KfOauth($options = []) static 客服授权
- * @method \Request\KeFu\KfAccount KfAccount($options = []) static 客服账号
- * @method \Request\KeFu\KfEvent KfEvent($options = []) static 客服消息
- * @method \Request\KeFu\KfMedia KfMedia($options = []) static 客服素材
- * @method \Request\KeFu\KfOther KfOther($options = []) static 客服其他
+ * @method static Request\Applet\Oauth Oauth($options = []) 小程序调用凭证
+ * @method static Request\Applet\User User($options = []) 小程序用户信息
+ * @method static Request\Applet\Message Message($options = []) 小程序消息处理
  */
-class Wechat
+class Applet
 {
     /**
      * 静态配置
@@ -47,7 +42,7 @@ class Wechat
     public static function __callStatic($name , $arguments)
     {
         $name = ucfirst(strtolower($name));
-        $class = "\\Request\\{$name}";
+        $class = "\\Request\\Applet\\{$name}";
 
         if (!empty($class) && class_exists($class)) {
             $option = array_shift($arguments);

@@ -2,14 +2,14 @@
 
 namespace Request\KeFu;
 
-use Request\Kernel\KfApi;
+use Request\Kernel\ApiKeFu;
 
 /**
  * 其他信息
- * Class KfOther
+ * Class Other
  * @package Request
  */
-class KfOther extends KfApi
+class Other extends ApiKeFu
 {
     /**
      * @title 获取客户基础信息

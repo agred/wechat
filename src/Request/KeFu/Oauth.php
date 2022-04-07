@@ -2,14 +2,14 @@
 
 namespace Request\KeFu;
 
-use Request\Kernel\KfApi;
+use Request\Kernel\ApiKeFu;
 
 /**
  * 调用凭证
- * Class KfOauth
+ * Class Oauth
  * @package Request
  */
-class KfOauth extends KfApi
+class Oauth extends ApiKeFu
 {
     /**
      * @title 获取调用凭证access_token

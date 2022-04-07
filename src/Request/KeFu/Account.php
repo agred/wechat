@@ -2,14 +2,14 @@
 
 namespace Request\KeFu;
 
-use Request\Kernel\KfApi;
+use Request\Kernel\ApiKeFu;
 
 /**
  * 客服账号
- * Class KfAccount
+ * Class Account
  * @package Request
  */
-class KfAccount extends KfApi
+class Account extends ApiKeFu
 {
     /**
      * @title 添加客服账号

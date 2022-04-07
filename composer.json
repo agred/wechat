@@ -18,7 +18,7 @@
         "psr-4": {
             "Request\\" : "src/Request/"
         },
-        "files": ["src/Wechat.php","src/functions.php"]
+        "files": ["src/Applet.php","src/Kf.php","src/functions.php"]
     },
     "minimum-stability": "dev"
 }
