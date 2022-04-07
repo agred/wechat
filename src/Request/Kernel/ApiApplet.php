@@ -88,9 +88,6 @@ class ApiApplet
         }
         $output = curl_exec($curl);
         curl_close($curl);
-        if (!is_null(json_decode($output))) {
-            $output = json_decode($output, true);
-        }
         return ($output);
     }
 
