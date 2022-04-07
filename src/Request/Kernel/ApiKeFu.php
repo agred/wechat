@@ -9,7 +9,7 @@ namespace Request\Kernel;
  */
 class ApiKeFu
 {
-    const SDK_VER = '1.0.6';
+    const SDK_VER = '1.0.7';
 
     const QY_API = "https://qyapi.weixin.qq.com";
     public $corpid    = null;
