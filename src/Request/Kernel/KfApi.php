@@ -1,18 +1,17 @@
 <?php
 
-namespace KeFu\Kernel;
+namespace Request\Kernel;
 
 /**
- * 内核
+ * 客服内核
  * Class BaseApi
- * @package KeFu\Kernel
+ * @package Request\Kernel
  */
-class BaseApi
+class KfApi
 {
+    const SDK_VER = '1.0.6';
 
-    const SDK_VER = '1.0.5';
-
-    const OPEN_API  = "https://qyapi.weixin.qq.com";
+    const QY_API = "https://qyapi.weixin.qq.com";
     public $corpid    = null;
     public $corpsecret = null;
 
@@ -151,5 +150,4 @@ class BaseApi
         $result = json_decode($output, true);
         return $result['data'];
     }
-
 }

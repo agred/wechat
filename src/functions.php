@@ -1,8 +1,6 @@
 <?php
 
-namespace KeFu;
-
-use KeFu\Kernel\BaseApi;
+namespace Request;
 
 /**
  * @title 获取URL某个参数的值
@@ -28,50 +26,4 @@ function get_query_str($url, $key)
         $res = $barr[$key];
     }
     return $res;
-}
-
-/**
- * @title 是否快手客户端
- * @return bool
- */
-if (!function_exists('is_kwai')) {
-    function is_kwai()
-    {
-        if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'kwai') !== false) {
-            return true;
-        }
-        return false;
-    }
-}
-
-/**
- * @title 是否苹果iphone
- * @return bool
- */
-if (!function_exists('is_iphone')) {
-    function is_iphone()
-    {
-        if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'iphone') !== false) {
-            return true;
-        }
-        return false;
-    }
-}
-
-/**
- * @title 获取快手URL Scheme
- * @param array $params 参数
- * @return string
- */
-function get_url_scheme($params = [])
-{
-    switch ($params['type']) {
-        case 'profile':
-            $link = 'kwai://profile/'.$params['uid'].'';
-            break;
-        default :
-            $link = '';
-
-    }
-    return $link;
 }

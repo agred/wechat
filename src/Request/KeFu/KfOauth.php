@@ -1,17 +1,16 @@
 <?php
 
-namespace KeFu;
+namespace Request\KeFu;
 
-use KeFu\Kernel\BaseApi;
+use Request\Kernel\KfApi;
 
 /**
  * 调用凭证
- * Class Oauth
- * @package KeFu
+ * Class KfOauth
+ * @package Request
  */
-class Oauth extends BaseApi
+class KfOauth extends KfApi
 {
-
     /**
      * @title 获取调用凭证access_token
      * @Scope
@@ -19,21 +18,22 @@ class Oauth extends BaseApi
      */
     public function access_token()
     {
-        $api_url = self::OPEN_API . '/cgi-bin/gettoken';
+        $api_url = self::QY_API . '/cgi-bin/gettoken';
         return $this->https_get($api_url);
     }
 
     /**
      * @title 获取第三方应用凭证
+     * @Scope
+     * @url https://open.work.weixin.qq.com/api/doc/90001/90143/90600
      * @param $suite_id
      * @param $suite_secret
      * @param $suite_ticket
-     * @Scope
-     * @url https://open.work.weixin.qq.com/api/doc/90001/90143/90600
+     * @return mixed
      */
     public function suite_access_token($suite_id, $suite_secret, $suite_ticket)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/service/get_suite_token';
+        $api_url = self::QY_API . '/cgi-bin/service/get_suite_token';
         $params = [];
         $data = [
             'suite_id' => $suite_id,
@@ -45,13 +45,14 @@ class Oauth extends BaseApi
 
     /**
      * @title 获取预授权码
-     * @param $suite_access_token
      * @Scope
      * @url https://open.work.weixin.qq.com/api/doc/90001/90143/90601
+     * @param $suite_access_token
+     * @return mixed
      */
     public function pre_auth_code($suite_access_token)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/service/get_pre_auth_code';
+        $api_url = self::QY_API . '/cgi-bin/service/get_pre_auth_code';
         $params = [
             'suite_access_token' => $suite_access_token
         ];
@@ -60,16 +61,17 @@ class Oauth extends BaseApi
 
     /**
      * @title 设置授权配置
+     * @Scope
+     * @url https://open.work.weixin.qq.com/api/doc/90001/90143/90602
      * @param $suite_access_token
      * @param $pre_auth_code
      * @param $appid
-     * @param $auth_type
-     * @Scope
-     * @url https://open.work.weixin.qq.com/api/doc/90001/90143/90602
+     * @param int $auth_type
+     * @return mixed
      */
     public function set_session_info($suite_access_token, $pre_auth_code, $appid, $auth_type = 0)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/service/set_session_info';
+        $api_url = self::QY_API . '/cgi-bin/service/set_session_info';
         $params = [
             'suite_access_token' => $suite_access_token
         ];
@@ -85,14 +87,15 @@ class Oauth extends BaseApi
 
     /**
      * @title 获取企业永久授权码
-     * @param $suite_access_token
-     * @param $auth_code
      * @Scope
      * @url https://open.work.weixin.qq.com/api/doc/90001/90143/90603
+     * @param $suite_access_token
+     * @param $auth_code
+     * @return mixed
      */
     public function permanent_code($suite_access_token, $auth_code)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/service/get_permanent_code';
+        $api_url = self::QY_API . '/cgi-bin/service/get_permanent_code';
         $params = [
             'suite_access_token' => $suite_access_token
         ];
@@ -104,15 +107,16 @@ class Oauth extends BaseApi
 
     /**
      * @title 获取企业授权信息
+     * @Scope
+     * @url https://open.work.weixin.qq.com/api/doc/90001/90143/90604
      * @param $suite_access_token
      * @param $auth_corpid
      * @param $permanent_code
-     * @Scope
-     * @url https://open.work.weixin.qq.com/api/doc/90001/90143/90604
+     * @return mixed
      */
     public function auth_info($suite_access_token, $auth_corpid, $permanent_code)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/service/get_auth_info';
+        $api_url = self::QY_API . '/cgi-bin/service/get_auth_info';
         $params = [
             'suite_access_token' => $suite_access_token
         ];
@@ -125,15 +129,16 @@ class Oauth extends BaseApi
 
     /**
      * @title 获取企业凭证
+     * @Scope
+     * @url https://open.work.weixin.qq.com/api/doc/90001/90143/90605
      * @param $suite_access_token
      * @param $auth_corpid
      * @param $permanent_code
-     * @Scope
-     * @url https://open.work.weixin.qq.com/api/doc/90001/90143/90605
+     * @return mixed
      */
     public function corp_token($suite_access_token, $auth_corpid, $permanent_code)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/service/get_corp_token';
+        $api_url = self::QY_API . '/cgi-bin/service/get_corp_token';
         $params = [
             'suite_access_token' => $suite_access_token
         ];
@@ -146,15 +151,16 @@ class Oauth extends BaseApi
 
     /**
      * @title 获取应用的管理员列表
+     * @Scope
+     * @url https://open.work.weixin.qq.com/api/doc/90001/90143/90606
      * @param $suite_access_token
      * @param $auth_corpid
      * @param $agentid
-     * @Scope
-     * @url https://open.work.weixin.qq.com/api/doc/90001/90143/90606
+     * @return mixed
      */
     public function admin_list($suite_access_token, $auth_corpid, $agentid)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/service/get_admin_list';
+        $api_url = self::QY_API . '/cgi-bin/service/get_admin_list';
         $params = [
             'suite_access_token' => $suite_access_token
         ];
@@ -164,5 +170,4 @@ class Oauth extends BaseApi
         ];
         return $this->https_post($api_url, $params, json_encode($data));
     }
-
 }

@@ -1,17 +1,16 @@
 <?php
 
-namespace KeFu;
+namespace Request\KeFu;
 
-use KeFu\Kernel\BaseApi;
+use Request\Kernel\KfApi;
 
 /**
  * 素材管理
- * Class Media
- * @package KeFu
+ * Class KfMedia
+ * @package Request
  */
-class Media extends BaseApi
+class KfMedia extends KfApi
 {
-
     /**
      * @title 上传临时素材
      * @Scope
@@ -22,7 +21,7 @@ class Media extends BaseApi
      */
     public function upload($access_token, $type, $file)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/media/upload?access_token=' . $access_token . '&type=' . $type;
+        $api_url = self::QY_API . '/cgi-bin/media/upload?access_token=' . $access_token . '&type=' . $type;
         return $this->https_byte($api_url, $file);
     }
 
@@ -35,12 +34,11 @@ class Media extends BaseApi
      */
     public function get($access_token, $media_id)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/media/get';
+        $api_url = self::QY_API . '/cgi-bin/media/get';
         $params = [
             'access_token' => $access_token,
             'media_id' => $media_id
         ];
         return $this->https_file($api_url, $params);
     }
-
 }

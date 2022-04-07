@@ -1,17 +1,16 @@
 <?php
 
-namespace KeFu;
+namespace Request\KeFu;
 
-use KeFu\Kernel\BaseApi;
+use Request\Kernel\KfApi;
 
 /**
  * 其他信息
- * Class Other
- * @package KeFu
+ * Class KfOther
+ * @package Request
  */
-class Other extends BaseApi
+class KfOther extends KfApi
 {
-
     /**
      * @title 获取客户基础信息
      * @Scope
@@ -21,7 +20,7 @@ class Other extends BaseApi
      */
     public function customer_batchget($access_token, $external_userid_list)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/kf/customer/batchget';
+        $api_url = self::QY_API . '/cgi-bin/kf/customer/batchget';
         $params = [
             'access_token' => $access_token
         ];
@@ -39,7 +38,7 @@ class Other extends BaseApi
      */
     public function get_corp_qualification($access_token)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/kf/get_corp_qualification';
+        $api_url = self::QY_API . '/cgi-bin/kf/get_corp_qualification';
         $params = [
             'access_token' => $access_token
         ];
@@ -56,7 +55,7 @@ class Other extends BaseApi
      */
     public function get_auth_info($suite_access_token, $auth_corpid, $permanent_code)
     {
-        $api_url = self::OPEN_API . '/cgi-bin/service/get_auth_info';
+        $api_url = self::QY_API . '/cgi-bin/service/get_auth_info';
         $params = [
             'suite_access_token' => $suite_access_token
         ];
@@ -66,5 +65,4 @@ class Other extends BaseApi
         ];
         return $this->https_post($api_url, $params, $data);
     }
-
 }

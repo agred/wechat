@@ -1,20 +1,22 @@
 <?php
 
-use KeFu\Kernel\DataArray;
+use Request\Kernel\DataArray;
 
 /**
- * Class Kf
- * @package KeFu
+ * Class Wechat
+ * @package Request
  *
- * @method \KeFu\Oauth Oauth($options = []) static 授权凭证
- * @method \KeFu\Account Account($options = []) static 用户操作
- * @method \KeFu\Event Event($options = []) static 客服消息
- * @method \KeFu\Media Media($options = []) static 素材管理
- * @method \KeFu\Other Other($options = []) static 其他信息
+ * @method \Request\Applet\AppOauth AppOauth($options = []) static 小程序调用凭证
+ * @method \Request\Applet\AppUser AppUser($options = []) static 小程序用户信息
+ * @method \Request\Applet\AppMessage AppMessage($options = []) static 小程序消息处理
+ * @method \Request\KeFu\KfOauth KfOauth($options = []) static 客服授权
+ * @method \Request\KeFu\KfAccount KfAccount($options = []) static 客服账号
+ * @method \Request\KeFu\KfEvent KfEvent($options = []) static 客服消息
+ * @method \Request\KeFu\KfMedia KfMedia($options = []) static 客服素材
+ * @method \Request\KeFu\KfOther KfOther($options = []) static 客服其他
  */
-class Kf
+class Wechat
 {
-
     /**
      * 静态配置
      */
@@ -45,7 +47,7 @@ class Kf
     public static function __callStatic($name , $arguments)
     {
         $name = ucfirst(strtolower($name));
-        $class = "\\KeFu\\{$name}";
+        $class = "\\Request\\{$name}";
 
         if (!empty($class) && class_exists($class)) {
             $option = array_shift($arguments);
@@ -53,5 +55,4 @@ class Kf
             return new $class($config);
         }
     }
-
 }
