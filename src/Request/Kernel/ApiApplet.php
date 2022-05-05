@@ -9,7 +9,7 @@ namespace Request\Kernel;
  */
 class ApiApplet
 {
-    const SDK_VER = '1.0.3';
+    const SDK_VER = '1.0.4';
 
     const APP_API = "https://api.weixin.qq.com";
     public $appId    = null;

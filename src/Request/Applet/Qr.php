@@ -6,7 +6,7 @@ use Request\Kernel\ApiApplet;
 
 /**
  * 小程序码
- * Class Oauth
+ * Class Qr
  * @package Request
  */
 class Qr extends ApiApplet
@@ -25,7 +25,7 @@ class Qr extends ApiApplet
             'access_token' => $access_token
         ];
         $data = [
-            'encrypted_msg_hash' => $path
+            'path' => $path
         ];
         return $this->https_post($api_url, $params, json_encode($data));
     }
@@ -44,7 +44,7 @@ class Qr extends ApiApplet
             'access_token' => $access_token
         ];
         $data = [
-            'encrypted_msg_hash' => $path
+            'path' => $path
         ];
         return $this->https_post($api_url, $params, json_encode($data));
     }
@@ -63,7 +63,7 @@ class Qr extends ApiApplet
             'access_token' => $access_token
         ];
         $data = [
-            'encrypted_msg_hash' => $scene
+            'scene' => $scene
         ];
         return $this->https_post($api_url, $params, json_encode($data));
     }
