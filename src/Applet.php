@@ -9,6 +9,7 @@ use Request\Kernel\DataArray;
  * @method static Request\Applet\Oauth Oauth($options = []) 小程序调用凭证
  * @method static Request\Applet\User User($options = []) 小程序用户信息
  * @method static Request\Applet\Message Message($options = []) 小程序消息处理
+ * @method static Request\Applet\Qr Qr($options = []) 小程序码
  */
 class Applet
 {
