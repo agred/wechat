@@ -9,7 +9,7 @@ namespace Request\Kernel;
  */
 class ApiApplet
 {
-    const SDK_VER = '1.0.4';
+    const SDK_VER = '1.0.5';
 
     const APP_API = "https://api.weixin.qq.com";
     public $appId    = null;
@@ -28,17 +28,6 @@ class ApiApplet
         return $this->response ? json_decode($this->response, true) : true;
     }
 
-    public function https_curl($url, $data = [])
-    {
-        $data['appid'] = $this->appId;
-        $data['secret'] = $this->appSecret;
-        if($data){
-            $url = $url . '?' . http_build_query($data);
-        }
-        $result = $this->https_request($url, $data);
-        return json_decode($result, true);
-    }
-
     public function https_file($url , $params = []){
         $params['appid'] = $this->appId;
         $params['secret'] = $this->appSecret;
@@ -55,7 +44,11 @@ class ApiApplet
             $url = $url . '?' . http_build_query($params);
         }
         $result = $this->https_request($url);
-        return json_decode($result, true);
+        if (is_null(json_decode($result))){
+            return $result;
+        } else {
+            return json_decode($result, true);
+        }
     }
 
     public function https_post($url, $params = [], $data = []){
@@ -65,7 +58,11 @@ class ApiApplet
             $url = $url . '?' . http_build_query($params);
         }
         $result = $this->https_request($url, $data);
-        return json_decode($result, true);
+        if (is_null(json_decode($result))){
+            return $result;
+        } else {
+            return json_decode($result, true);
+        }
     }
 
     public function https_request($url, $data = null, $headers = null)

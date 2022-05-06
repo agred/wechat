@@ -41,7 +41,7 @@ class Message extends ApiApplet
     }
 
     /**
-     * @title 发送订阅消息
+     * @title 开发者可以通过该接口向用户发送设备消息
      * @Scope
      * @url https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/hardware-device/hardwareDevice.send.html
      * @param string $access_token

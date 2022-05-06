@@ -28,17 +28,6 @@ class ApiKeFu
         return $this->response ? json_decode($this->response, true) : true;
     }
 
-    public function https_curl($url, $data = [])
-    {
-        $data['corpid'] = $this->corpid;
-        $data['corpsecret'] = $this->corpsecret;
-        if($data){
-            $url = $url . '?' . http_build_query($data);
-        }
-        $result = $this->https_request($url, $data);
-        return json_decode($result, true);
-    }
-
     public function https_file($url , $params = []){
         $params['corpid'] = $this->corpid;
         $params['corpsecret'] = $this->corpsecret;
@@ -55,7 +44,11 @@ class ApiKeFu
             $url = $url . '?' . http_build_query($params);
         }
         $result = $this->https_request($url);
-        return json_decode($result, true);
+        if (is_null(json_decode($result))){
+            return $result;
+        } else {
+            return json_decode($result, true);
+        }
     }
 
     public function https_post($url, $params = [], $data = []){
@@ -65,7 +58,11 @@ class ApiKeFu
             $url = $url . '?' . http_build_query($params);
         }
         $result = $this->https_request($url, $data);
-        return json_decode($result, true);
+        if (is_null(json_decode($result))){
+            return $result;
+        } else {
+            return json_decode($result, true);
+        }
     }
 
     public function https_request($url, $data = null, $headers = null)

@@ -48,8 +48,12 @@ class User extends ApiApplet
             'openid' => $openid,
             'transaction_id' => $transaction_id,
         ];
-        if ($mch_id) $params['mch_id'] = $mch_id;
-        if ($out_trade_no) $params['out_trade_no'] = $out_trade_no;
+        if ($mch_id) {
+            $params['mch_id'] = $mch_id;
+        }
+        if ($out_trade_no) {
+            $params['out_trade_no'] = $out_trade_no;
+        }
         return $this->https_get($api_url, $params);
     }
 
@@ -87,6 +91,28 @@ class User extends ApiApplet
         ];
         $data = [
             'code' => $code
+        ];
+        return $this->https_post($api_url, $params, json_encode($data));
+    }
+
+    /**
+     * @title 获取用户encryptKey。 会获取用户最近3次的key，每个key的存活时间为3600s
+     * @Scope
+     * @url https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/internet/internet.getUserEncryptKey.html
+     * @param string $access_token
+     * @param string $openid
+     * @param string $signature
+     */
+    public function getUserEncryptKey($access_token, $openid, $signature)
+    {
+        $api_url = self::APP_API . '/wxa/business/getuserencryptkey';
+        $params = [
+            'access_token' => $access_token
+        ];
+        $data = [
+            'openid' => $openid,
+            'signature' => $signature,
+            'sig_method' => 'hmac_sha256',
         ];
         return $this->https_post($api_url, $params, json_encode($data));
     }

@@ -10,6 +10,7 @@ use Request\Kernel\DataArray;
  * @method static Request\Applet\User User($options = []) 小程序用户信息
  * @method static Request\Applet\Message Message($options = []) 小程序消息处理
  * @method static Request\Applet\Qr Qr($options = []) 小程序码
+ * @method static Request\Applet\Tool Tool($options = []) 其他工具
  */
 class Applet
 {
