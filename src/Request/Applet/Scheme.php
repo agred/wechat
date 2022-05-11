@@ -20,11 +20,11 @@ class Scheme extends ApiApplet
      */
     public function generate($access_token, $jump_wxa)
     {
-        $api_url = self::APP_API . '/wxa/generatescheme';
-        $params = [
+        $api_url = self::API_APP . '/wxa/generatescheme';
+        $params  = [
             'access_token' => $access_token
         ];
-        $data = [
+        $data    = [
             'jump_wxa' => $jump_wxa
         ];
         return $this->https_post($api_url, $params, json_encode($data));
@@ -39,11 +39,11 @@ class Scheme extends ApiApplet
      */
     public function query($access_token, $scheme)
     {
-        $api_url = self::APP_API . '/wxa/queryscheme';
-        $params = [
+        $api_url = self::API_APP . '/wxa/queryscheme';
+        $params  = [
             'access_token' => $access_token
         ];
-        $data = [
+        $data    = [
             'scheme' => $scheme
         ];
         return $this->https_post($api_url, $params, json_encode($data));

@@ -19,9 +19,9 @@ class Oauth extends ApiApplet
      */
     public function code2Session($code)
     {
-        $api_url = self::APP_API . '/sns/jscode2session';
-        $params = [
-            'js_code' => $code,
+        $api_url = self::API_APP . '/sns/jscode2session';
+        $params  = [
+            'js_code'    => $code,
             'grant_type' => 'authorization_code',
         ];
         return $this->https_get($api_url, $params);
@@ -34,8 +34,8 @@ class Oauth extends ApiApplet
      */
     public function getAccessToken()
     {
-        $api_url = self::APP_API . '/cgi-bin/token';
-        $params = [
+        $api_url = self::API_APP . '/cgi-bin/token';
+        $params  = [
             'grant_type' => 'client_credential',
         ];
         return $this->https_get($api_url, $params);
@@ -51,12 +51,12 @@ class Oauth extends ApiApplet
      */
     public function getSnTicket($access_token, $sn, $model_id)
     {
-        $api_url = self::APP_API . '/wxa/getsnticket';
-        $params = [
+        $api_url = self::API_APP . '/wxa/getsnticket';
+        $params  = [
             'access_token' => $access_token
         ];
-        $data = [
-            'sn' => $sn,
+        $data    = [
+            'sn'       => $sn,
             'model_id' => $model_id
         ];
         return $this->https_post($api_url, $params, json_encode($data));
@@ -73,13 +73,13 @@ class Oauth extends ApiApplet
      */
     public function verifySignature($access_token, $openid, $json_string, $json_signature)
     {
-        $api_url = self::APP_API . '/cgi-bin/soter/verify_signature';
-        $params = [
+        $api_url = self::API_APP . '/cgi-bin/soter/verify_signature';
+        $params  = [
             'access_token' => $access_token
         ];
-        $data = [
-            'openid' => $openid,
-            'json_string' => $json_string,
+        $data    = [
+            'openid'         => $openid,
+            'json_string'    => $json_string,
             'json_signature' => $json_string
         ];
         return $this->https_post($api_url, $params, json_encode($data));

@@ -41,9 +41,9 @@ class Applet
      * @param $arguments
      * @return mixed
      */
-    public static function __callStatic($name , $arguments)
+    public static function __callStatic($name, $arguments)
     {
-        $name = ucfirst(strtolower($name));
+        $name  = ucfirst(strtolower($name));
         $class = "\\Request\\Applet\\{$name}";
 
         if (!empty($class) && class_exists($class)) {

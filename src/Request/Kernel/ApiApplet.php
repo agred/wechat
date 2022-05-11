@@ -9,17 +9,17 @@ namespace Request\Kernel;
  */
 class ApiApplet
 {
-    const SDK_VER = '1.0.5';
+    const SDK_VER = '1.0.8';
 
-    const APP_API = "https://api.weixin.qq.com";
-    public $appId    = null;
+    const API_APP = "https://api.weixin.qq.com";
+    public $appId     = null;
     public $appSecret = null;
 
     public $response = null;
 
     public function __construct($config)
     {
-        $this->appId = $config['appid'];
+        $this->appId     = $config['appid'];
         $this->appSecret = $config['appSecret'];
     }
 
@@ -28,37 +28,40 @@ class ApiApplet
         return $this->response ? json_decode($this->response, true) : true;
     }
 
-    public function https_file($url , $params = []){
-        $params['appid'] = $this->appId;
+    public function https_file($url, $params = [])
+    {
+        $params['appid']  = $this->appId;
         $params['secret'] = $this->appSecret;
-        if($params){
+        if ($params) {
             $url = $url . '?' . http_build_query($params);
         }
         return $this->https_request($url);
     }
 
-    public function https_get($url , $params = []){
-        $params['appid'] = $this->appId;
+    public function https_get($url, $params = [])
+    {
+        $params['appid']  = $this->appId;
         $params['secret'] = $this->appSecret;
-        if($params){
+        if ($params) {
             $url = $url . '?' . http_build_query($params);
         }
         $result = $this->https_request($url);
-        if (is_null(json_decode($result))){
+        if (is_null(json_decode($result))) {
             return $result;
         } else {
             return json_decode($result, true);
         }
     }
 
-    public function https_post($url, $params = [], $data = []){
-        $params['appid'] = $this->appId;
+    public function https_post($url, $params = [], $data = [])
+    {
+        $params['appid']  = $this->appId;
         $params['secret'] = $this->appSecret;
-        if($params){
+        if ($params) {
             $url = $url . '?' . http_build_query($params);
         }
         $result = $this->https_request($url, $data);
-        if (is_null(json_decode($result))){
+        if (is_null(json_decode($result))) {
             return $result;
         } else {
             return json_decode($result, true);
@@ -91,12 +94,12 @@ class ApiApplet
     public function https_byte($url, $file)
     {
         $curl = curl_init();
-        if(class_exists('\CURLFile')){
-            curl_setopt ( $curl, CURLOPT_SAFE_UPLOAD, true);
+        if (class_exists('\CURLFile')) {
+            curl_setopt($curl, CURLOPT_SAFE_UPLOAD, true);
             $data = array('media' => new \CURLFile($file));
-        }else{
-            if (defined ( 'CURLOPT_SAFE_UPLOAD' )) {
-                curl_setopt ( $curl, CURLOPT_SAFE_UPLOAD, false );
+        } else {
+            if (defined('CURLOPT_SAFE_UPLOAD')) {
+                curl_setopt($curl, CURLOPT_SAFE_UPLOAD, false);
             }
             $data = array('media' => '@' . realpath($file));
         }
@@ -113,7 +116,7 @@ class ApiApplet
     public function upload_byte($url, $file)
     {
         $payload = '';
-        $params = "--__X_PAW_BOUNDARY__\r\n"
+        $params  = "--__X_PAW_BOUNDARY__\r\n"
             . "Content-Type: application/x-www-form-urlencoded\r\n"
             . "\r\n"
             . $payload . "\r\n"
@@ -124,11 +127,11 @@ class ApiApplet
             . file_get_contents($file) . "\r\n"
             . "--__X_PAW_BOUNDARY__--";
 
-        $first_newline = strpos($params, "\r\n");
+        $first_newline      = strpos($params, "\r\n");
         $multipart_boundary = substr($params, 2, $first_newline - 2);
-        $request_headers = array();
-        $request_headers[] = 'Content-Length: ' . strlen($params);
-        $request_headers[] = 'Content-Type: multipart/form-data; boundary=' . $multipart_boundary;
+        $request_headers    = array();
+        $request_headers[]  = 'Content-Length: ' . strlen($params);
+        $request_headers[]  = 'Content-Type: multipart/form-data; boundary=' . $multipart_boundary;
 
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_POST, 1);

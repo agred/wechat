@@ -20,11 +20,11 @@ class Link extends ApiApplet
      */
     public function generate($access_token, $path)
     {
-        $api_url = self::APP_API . '/wxa/generate_urllink';
-        $params = [
+        $api_url = self::API_APP . '/wxa/generate_urllink';
+        $params  = [
             'access_token' => $access_token
         ];
-        $data = [
+        $data    = [
             'path' => $path
         ];
         return $this->https_post($api_url, $params, json_encode($data));
@@ -39,11 +39,11 @@ class Link extends ApiApplet
      */
     public function query($access_token, $url_link)
     {
-        $api_url = self::APP_API . '/wxa/query_urllink';
-        $params = [
+        $api_url = self::API_APP . '/wxa/query_urllink';
+        $params  = [
             'access_token' => $access_token
         ];
-        $data = [
+        $data    = [
             'url_link' => $url_link
         ];
         return $this->https_post($api_url, $params, json_encode($data));
@@ -60,13 +60,13 @@ class Link extends ApiApplet
      */
     public function getShortLink($access_token, $page_url, $page_title, $is_permanent = false)
     {
-        $api_url = self::APP_API . '/wxa/genwxashortlink';
-        $params = [
+        $api_url = self::API_APP . '/wxa/genwxashortlink';
+        $params  = [
             'access_token' => $access_token
         ];
-        $data = [
-            'page_url' => $page_url,
-            'page_title' => $page_title,
+        $data    = [
+            'page_url'     => $page_url,
+            'page_title'   => $page_title,
             'is_permanent' => $is_permanent
         ];
         return $this->https_post($api_url, $params, json_encode($data));

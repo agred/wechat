@@ -22,14 +22,14 @@ class Event extends ApiKeFu
      */
     public function sync_msg($access_token, $cursor, $token, $limit = 1000)
     {
-        $api_url = self::QY_API . '/cgi-bin/kf/sync_msg';
-        $params = [
+        $api_url = self::API_QY . '/cgi-bin/kf/sync_msg';
+        $params  = [
             'access_token' => $access_token
         ];
-        $data = [
+        $data    = [
             'cursor' => $cursor,
-            'token' => $token,
-            'limit' => $limit
+            'token'  => $token,
+            'limit'  => $limit
         ];
         return $this->https_post($api_url, $params, json_encode($data));
     }
@@ -43,8 +43,8 @@ class Event extends ApiKeFu
      */
     public function send_msg($access_token, $data = [])
     {
-        $api_url = self::QY_API . '/cgi-bin/kf/send_msg';
-        $params = [
+        $api_url = self::API_QY . '/cgi-bin/kf/send_msg';
+        $params  = [
             'access_token' => $access_token
         ];
         return $this->https_post($api_url, $params, json_encode($data, JSON_UNESCAPED_UNICODE));
@@ -59,8 +59,8 @@ class Event extends ApiKeFu
      */
     public function send_msg_on_event($access_token, $data)
     {
-        $api_url = self::QY_API . '/cgi-bin/kf/send_msg_on_event';
-        $params = [
+        $api_url = self::API_QY . '/cgi-bin/kf/send_msg_on_event';
+        $params  = [
             'access_token' => $access_token
         ];
         return $this->https_post($api_url, $params, json_encode($data, JSON_UNESCAPED_UNICODE));

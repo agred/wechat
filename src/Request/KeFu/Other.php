@@ -20,11 +20,11 @@ class Other extends ApiKeFu
      */
     public function customer_batchget($access_token, $external_userid_list)
     {
-        $api_url = self::QY_API . '/cgi-bin/kf/customer/batchget';
-        $params = [
+        $api_url = self::API_QY . '/cgi-bin/kf/customer/batchget';
+        $params  = [
             'access_token' => $access_token
         ];
-        $data = [
+        $data    = [
             'external_userid_list' => $external_userid_list
         ];
         return $this->https_post($api_url, $params, $data);
@@ -38,8 +38,8 @@ class Other extends ApiKeFu
      */
     public function get_corp_qualification($access_token)
     {
-        $api_url = self::QY_API . '/cgi-bin/kf/get_corp_qualification';
-        $params = [
+        $api_url = self::API_QY . '/cgi-bin/kf/get_corp_qualification';
+        $params  = [
             'access_token' => $access_token
         ];
         return $this->https_get($api_url, $params);
@@ -55,12 +55,12 @@ class Other extends ApiKeFu
      */
     public function get_auth_info($suite_access_token, $auth_corpid, $permanent_code)
     {
-        $api_url = self::QY_API . '/cgi-bin/service/get_auth_info';
-        $params = [
+        $api_url = self::API_QY . '/cgi-bin/service/get_auth_info';
+        $params  = [
             'suite_access_token' => $suite_access_token
         ];
-        $data = [
-            'auth_corpid' => $auth_corpid,
+        $data    = [
+            'auth_corpid'    => $auth_corpid,
             'permanent_code' => $permanent_code
         ];
         return $this->https_post($api_url, $params, $data);

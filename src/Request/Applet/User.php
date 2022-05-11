@@ -20,11 +20,11 @@ class User extends ApiApplet
      */
     public function checkEncryptedData($access_token, $encrypted_msg_hash)
     {
-        $api_url = self::APP_API . '/wxa/business/checkencryptedmsg';
-        $params = [
+        $api_url = self::API_APP . '/wxa/business/checkencryptedmsg';
+        $params  = [
             'access_token' => $access_token
         ];
-        $data = [
+        $data    = [
             'encrypted_msg_hash' => $encrypted_msg_hash
         ];
         return $this->https_post($api_url, $params, json_encode($data));
@@ -42,10 +42,10 @@ class User extends ApiApplet
      */
     public function getPaidUnionId($access_token, $openid, $transaction_id, $mch_id = null, $out_trade_no = null)
     {
-        $api_url = self::APP_API . '/wxa/getpaidunionid';
-        $params = [
-            'access_token' => $access_token,
-            'openid' => $openid,
+        $api_url = self::API_APP . '/wxa/getpaidunionid';
+        $params  = [
+            'access_token'   => $access_token,
+            'openid'         => $openid,
             'transaction_id' => $transaction_id,
         ];
         if ($mch_id) {
@@ -66,11 +66,11 @@ class User extends ApiApplet
      */
     public function getPluginOpenPId($access_token, $code)
     {
-        $api_url = self::APP_API . '/wxa/getpluginopenpid';
-        $params = [
+        $api_url = self::API_APP . '/wxa/getpluginopenpid';
+        $params  = [
             'access_token' => $access_token
         ];
-        $data = [
+        $data    = [
             'code' => $code
         ];
         return $this->https_post($api_url, $params, json_encode($data));
@@ -85,11 +85,11 @@ class User extends ApiApplet
      */
     public function getPhoneNumber($access_token, $code)
     {
-        $api_url = self::APP_API . '/wxa/business/getuserphonenumber';
-        $params = [
+        $api_url = self::API_APP . '/wxa/business/getuserphonenumber';
+        $params  = [
             'access_token' => $access_token
         ];
-        $data = [
+        $data    = [
             'code' => $code
         ];
         return $this->https_post($api_url, $params, json_encode($data));
@@ -105,13 +105,13 @@ class User extends ApiApplet
      */
     public function getUserEncryptKey($access_token, $openid, $signature)
     {
-        $api_url = self::APP_API . '/wxa/business/getuserencryptkey';
-        $params = [
+        $api_url = self::API_APP . '/wxa/business/getuserencryptkey';
+        $params  = [
             'access_token' => $access_token
         ];
-        $data = [
-            'openid' => $openid,
-            'signature' => $signature,
+        $data    = [
+            'openid'     => $openid,
+            'signature'  => $signature,
             'sig_method' => 'hmac_sha256',
         ];
         return $this->https_post($api_url, $params, json_encode($data));

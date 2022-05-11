@@ -18,7 +18,7 @@ class Oauth extends ApiKeFu
      */
     public function access_token()
     {
-        $api_url = self::QY_API . '/cgi-bin/gettoken';
+        $api_url = self::API_QY . '/cgi-bin/gettoken';
         return $this->https_get($api_url);
     }
 
@@ -33,10 +33,10 @@ class Oauth extends ApiKeFu
      */
     public function suite_access_token($suite_id, $suite_secret, $suite_ticket)
     {
-        $api_url = self::QY_API . '/cgi-bin/service/get_suite_token';
-        $params = [];
-        $data = [
-            'suite_id' => $suite_id,
+        $api_url = self::API_QY . '/cgi-bin/service/get_suite_token';
+        $params  = [];
+        $data    = [
+            'suite_id'     => $suite_id,
             'suite_secret' => $suite_secret,
             'suite_ticket' => $suite_ticket
         ];
@@ -52,8 +52,8 @@ class Oauth extends ApiKeFu
      */
     public function pre_auth_code($suite_access_token)
     {
-        $api_url = self::QY_API . '/cgi-bin/service/get_pre_auth_code';
-        $params = [
+        $api_url = self::API_QY . '/cgi-bin/service/get_pre_auth_code';
+        $params  = [
             'suite_access_token' => $suite_access_token
         ];
         return $this->https_get($api_url, $params);
@@ -71,14 +71,14 @@ class Oauth extends ApiKeFu
      */
     public function set_session_info($suite_access_token, $pre_auth_code, $appid, $auth_type = 0)
     {
-        $api_url = self::QY_API . '/cgi-bin/service/set_session_info';
-        $params = [
+        $api_url = self::API_QY . '/cgi-bin/service/set_session_info';
+        $params  = [
             'suite_access_token' => $suite_access_token
         ];
-        $data = [
+        $data    = [
             'pre_auth_code' => $pre_auth_code,
-            'session_info' => [
-                'appid' => $appid,
+            'session_info'  => [
+                'appid'     => $appid,
                 'auth_type' => $auth_type
             ]
         ];
@@ -95,11 +95,11 @@ class Oauth extends ApiKeFu
      */
     public function permanent_code($suite_access_token, $auth_code)
     {
-        $api_url = self::QY_API . '/cgi-bin/service/get_permanent_code';
-        $params = [
+        $api_url = self::API_QY . '/cgi-bin/service/get_permanent_code';
+        $params  = [
             'suite_access_token' => $suite_access_token
         ];
-        $data = [
+        $data    = [
             'auth_code' => $auth_code
         ];
         return $this->https_post($api_url, $params, json_encode($data));
@@ -116,12 +116,12 @@ class Oauth extends ApiKeFu
      */
     public function auth_info($suite_access_token, $auth_corpid, $permanent_code)
     {
-        $api_url = self::QY_API . '/cgi-bin/service/get_auth_info';
-        $params = [
+        $api_url = self::API_QY . '/cgi-bin/service/get_auth_info';
+        $params  = [
             'suite_access_token' => $suite_access_token
         ];
-        $data = [
-            'auth_corpid' => $auth_corpid,
+        $data    = [
+            'auth_corpid'    => $auth_corpid,
             'permanent_code' => $permanent_code
         ];
         return $this->https_post($api_url, $params, json_encode($data));
@@ -138,12 +138,12 @@ class Oauth extends ApiKeFu
      */
     public function corp_token($suite_access_token, $auth_corpid, $permanent_code)
     {
-        $api_url = self::QY_API . '/cgi-bin/service/get_corp_token';
-        $params = [
+        $api_url = self::API_QY . '/cgi-bin/service/get_corp_token';
+        $params  = [
             'suite_access_token' => $suite_access_token
         ];
-        $data = [
-            'auth_corpid' => $auth_corpid,
+        $data    = [
+            'auth_corpid'    => $auth_corpid,
             'permanent_code' => $permanent_code
         ];
         return $this->https_post($api_url, $params, json_encode($data));
@@ -160,13 +160,13 @@ class Oauth extends ApiKeFu
      */
     public function admin_list($suite_access_token, $auth_corpid, $agentid)
     {
-        $api_url = self::QY_API . '/cgi-bin/service/get_admin_list';
-        $params = [
+        $api_url = self::API_QY . '/cgi-bin/service/get_admin_list';
+        $params  = [
             'suite_access_token' => $suite_access_token
         ];
-        $data = [
+        $data    = [
             'auth_corpid' => $auth_corpid,
-            'agentid' => $agentid
+            'agentid'     => $agentid
         ];
         return $this->https_post($api_url, $params, json_encode($data));
     }

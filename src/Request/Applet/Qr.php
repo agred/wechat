@@ -20,11 +20,11 @@ class Qr extends ApiApplet
      */
     public function createQRCode($access_token, $path)
     {
-        $api_url = self::APP_API . '/cgi-bin/wxaapp/createwxaqrcode';
-        $params = [
+        $api_url = self::API_APP . '/cgi-bin/wxaapp/createwxaqrcode';
+        $params  = [
             'access_token' => $access_token
         ];
-        $data = [
+        $data    = [
             'path' => $path
         ];
         return $this->https_post($api_url, $params, json_encode($data));
@@ -39,11 +39,11 @@ class Qr extends ApiApplet
      */
     public function get($access_token, $path)
     {
-        $api_url = self::APP_API . '/wxa/getwxacode';
-        $params = [
+        $api_url = self::API_APP . '/wxa/getwxacode';
+        $params  = [
             'access_token' => $access_token
         ];
-        $data = [
+        $data    = [
             'path' => $path
         ];
         return $this->https_post($api_url, $params, json_encode($data));
@@ -58,11 +58,11 @@ class Qr extends ApiApplet
      */
     public function getUnlimited($access_token, $scene)
     {
-        $api_url = self::APP_API . '/wxa/getwxacodeunlimit';
-        $params = [
+        $api_url = self::API_APP . '/wxa/getwxacodeunlimit';
+        $params  = [
             'access_token' => $access_token
         ];
-        $data = [
+        $data    = [
             'scene' => $scene
         ];
         return $this->https_post($api_url, $params, json_encode($data));

@@ -21,11 +21,11 @@ class Tool extends ApiApplet
      */
     public function getAuthenticationUrl($access_token, $openid, $ctoken)
     {
-        $api_url = self::APP_API . '/redpacketcover/wxapp/cover_url/get_by_token';
-        $params = [
+        $api_url = self::API_APP . '/redpacketcover/wxapp/cover_url/get_by_token';
+        $params  = [
             'access_token' => $access_token
         ];
-        $data = [
+        $data    = [
             'openid' => $openid,
             'ctoken' => $ctoken
         ];
@@ -41,8 +41,8 @@ class Tool extends ApiApplet
      */
     public function getDomainInfo($access_token, $action = null)
     {
-        $api_url = self::APP_API . '/wxa/getwxadevinfo';
-        $params = [
+        $api_url = self::API_APP . '/wxa/getwxadevinfo';
+        $params  = [
             'access_token' => $access_token
         ];
         if ($action) {
@@ -62,11 +62,11 @@ class Tool extends ApiApplet
      */
     public function getFeedback($access_token, $type = null, $page = 1, $num = 10)
     {
-        $api_url = self::APP_API . '/wxaapi/feedback/list';
-        $params = [
+        $api_url = self::API_APP . '/wxaapi/feedback/list';
+        $params  = [
             'access_token' => $access_token,
-            'page' => $page,
-            'num' => $num,
+            'page'         => $page,
+            'num'          => $num,
         ];
         if ($type) {
             $params['type'] = $type;
@@ -84,11 +84,11 @@ class Tool extends ApiApplet
      */
     public function getFeedbackmedia($access_token, $record_id, $media_id)
     {
-        $api_url = self::APP_API . '/cgi-bin/media/getfeedbackmedia';
-        $params = [
+        $api_url = self::API_APP . '/cgi-bin/media/getfeedbackmedia';
+        $params  = [
             'access_token' => $access_token,
-            'record_id' => $record_id,
-            'media_id' => $media_id,
+            'record_id'    => $record_id,
+            'media_id'     => $media_id,
         ];
         return $this->https_get($api_url, $params);
     }
@@ -101,8 +101,8 @@ class Tool extends ApiApplet
      */
     public function getGrayReleasePlan($access_token)
     {
-        $api_url = self::APP_API . '/wxa/getgrayreleaseplan';
-        $params = [
+        $api_url = self::API_APP . '/wxa/getgrayreleaseplan';
+        $params  = [
             'access_token' => $access_token,
         ];
         return $this->https_get($api_url, $params);
@@ -116,8 +116,8 @@ class Tool extends ApiApplet
      */
     public function getSceneList($access_token)
     {
-        $api_url = self::APP_API . '/wxaapi/log/get_scene';
-        $params = [
+        $api_url = self::API_APP . '/wxaapi/log/get_scene';
+        $params  = [
             'access_token' => $access_token,
         ];
         return $this->https_get($api_url, $params);
@@ -131,8 +131,8 @@ class Tool extends ApiApplet
      */
     public function getVersionList($access_token)
     {
-        $api_url = self::APP_API . '/wxaapi/log/get_client_version';
-        $params = [
+        $api_url = self::API_APP . '/wxaapi/log/get_client_version';
+        $params  = [
             'access_token' => $access_token,
         ];
         return $this->https_get($api_url, $params);

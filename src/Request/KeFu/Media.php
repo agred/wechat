@@ -21,7 +21,7 @@ class Media extends ApiKeFu
      */
     public function upload($access_token, $type, $file)
     {
-        $api_url = self::QY_API . '/cgi-bin/media/upload?access_token=' . $access_token . '&type=' . $type;
+        $api_url = self::API_QY . '/cgi-bin/media/upload?access_token=' . $access_token . '&type=' . $type;
         return $this->https_byte($api_url, $file);
     }
 
@@ -34,10 +34,10 @@ class Media extends ApiKeFu
      */
     public function get($access_token, $media_id)
     {
-        $api_url = self::QY_API . '/cgi-bin/media/get';
-        $params = [
+        $api_url = self::API_QY . '/cgi-bin/media/get';
+        $params  = [
             'access_token' => $access_token,
-            'media_id' => $media_id
+            'media_id'     => $media_id
         ];
         return $this->https_file($api_url, $params);
     }
