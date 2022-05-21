@@ -18,15 +18,23 @@ class Scheme extends ApiApplet
      * @param string $access_token
      * @param string $jump_wxa
      */
-    public function generate($access_token, $jump_wxa)
+    public function generate($access_token, $jump_wxa, $expire_type = 0, $expire_time_or_interval = 0)
     {
         $api_url = self::API_APP . '/wxa/generatescheme';
         $params  = [
             'access_token' => $access_token
         ];
         $data    = [
-            'jump_wxa' => $jump_wxa
+            'jump_wxa' => $jump_wxa,
         ];
+        if ($expire_type == 0) {
+            $data['expire_type'] = $expire_type;
+            $data['expire_time'] = $expire_time_or_interval;
+        }
+        if ($expire_type == 1) {
+            $data['expire_type']     = $expire_type;
+            $data['expire_interval'] = $expire_time_or_interval;
+        }
         return $this->https_post($api_url, $params, json_encode($data));
     }
 
