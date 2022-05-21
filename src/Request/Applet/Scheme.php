@@ -16,7 +16,7 @@ class Scheme extends ApiApplet
      * @Scope
      * @url https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/url-scheme/urlscheme.generate.html
      * @param string $access_token
-     * @param string $jump_wxa
+     * @param array $jump_wxa
      */
     public function generate($access_token, $jump_wxa, $expire_type = 0, $expire_time_or_interval = 0)
     {
