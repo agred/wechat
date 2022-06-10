@@ -18,7 +18,7 @@ class Message extends ApiApplet
      * @param string $access_token
      * @param string $touser
      * @param string $template_id
-     * @param object $body
+     * @param array $body
      * @param string $page
      * @param string $miniprogram_state
      * @param string $lang
@@ -49,7 +49,7 @@ class Message extends ApiApplet
      * @param string $template_id
      * @param string $sn
      * @param string $modelId
-     * @param object $body
+     * @param array $body
      * @param string $page
      * @param string $miniprogram_state
      * @param string $lang
