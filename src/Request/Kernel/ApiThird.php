@@ -9,18 +9,14 @@ namespace Request\Kernel;
  */
 class ApiThird
 {
-    const SDK_VER = '1.0.1';
+    const SDK_VER = '1.0.2';
 
     const API_APP = "https://api.weixin.qq.com";
-    public $appId     = null;
-    public $appSecret = null;
 
     public $response = null;
 
-    public function __construct($config)
+    public function __construct()
     {
-        $this->appId     = $config['appid'];
-        $this->appSecret = $config['appSecret'];
     }
 
     public function toArray()
@@ -30,8 +26,6 @@ class ApiThird
 
     public function https_file($url, $params = [])
     {
-        $params['appid']  = $this->appId;
-        $params['secret'] = $this->appSecret;
         if ($params) {
             $url = $url . '?' . http_build_query($params);
         }
@@ -40,8 +34,6 @@ class ApiThird
 
     public function https_get($url, $params = [])
     {
-        $params['appid']  = $this->appId;
-        $params['secret'] = $this->appSecret;
         if ($params) {
             $url = $url . '?' . http_build_query($params);
         }
@@ -55,8 +47,6 @@ class ApiThird
 
     public function https_post($url, $params = [], $data = [])
     {
-        $params['appid']  = $this->appId;
-        $params['secret'] = $this->appSecret;
         if ($params) {
             $url = $url . '?' . http_build_query($params);
         }
