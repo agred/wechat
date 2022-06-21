@@ -82,4 +82,136 @@ class Domain extends ApiThird
         }
         return $this->https_post($api_url, $params, json_encode($data));
     }
+
+    /**
+     * @title 小程序设置服务器域名
+     * @Scope
+     * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/Mini_Program_Basic_Info/Server_Address_Configuration.html
+     * @param $access_token
+     * @param $action
+     * @param $requestdomain
+     * @param $wsrequestdomain
+     * @param $uploaddomain
+     * @param $downloaddomain
+     * @param $udpdomain
+     * @param $tcpdomain
+     * @return bool|mixed|string
+     */
+    public function modify_domain($access_token, $action, $requestdomain, $wsrequestdomain, $uploaddomain, $downloaddomain, $udpdomain, $tcpdomain)
+    {
+        $api_url = self::API_APP . '/wxa/modify_domain';
+        $params  = [
+            'access_token' => $access_token,
+        ];
+        if ($action == 'get') {
+            $data = [
+                'action' => $action,
+            ];
+        } else {
+            $data = [
+                'action'          => $action,
+                'requestdomain'   => $requestdomain,
+                'wsrequestdomain' => $wsrequestdomain,
+                'uploaddomain'    => $uploaddomain,
+                'downloaddomain'  => $downloaddomain,
+                'udpdomain'       => $udpdomain,
+                'tcpdomain'       => $tcpdomain,
+            ];
+        }
+        return $this->https_post($api_url, $params, json_encode($data));
+    }
+
+    /**
+     * @title 小程序设置业务域名
+     * @Scope
+     * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/Mini_Program_Basic_Info/setwebviewdomain.html
+     * @param $access_token
+     * @param $action
+     * @param $webviewdomain
+     * @return bool|mixed|string
+     */
+    public function set_webview_domain($access_token, $action, $webviewdomain)
+    {
+        $api_url = self::API_APP . '/wxa/setwebviewdomain';
+        $params  = [
+            'access_token' => $access_token,
+        ];
+        if ($action == 'get') {
+            $data = [
+                'action' => $action,
+            ];
+        } else {
+            $data = [
+                'action'        => $action,
+                'webviewdomain' => $webviewdomain,
+            ];
+        }
+        return $this->https_post($api_url, $params, json_encode($data));
+    }
+
+    /**
+     * @title 快速设置小程序服务器域名
+     * @Scope
+     * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/Mini_Program_Basic_Info/Server_Address_Configuration.html
+     * @param $access_token
+     * @param $action
+     * @param $requestdomain
+     * @param $wsrequestdomain
+     * @param $uploaddomain
+     * @param $downloaddomain
+     * @param $udpdomain
+     * @param $tcpdomain
+     * @return bool|mixed|string
+     */
+    public function modify_domain_directly($access_token, $action, $requestdomain, $wsrequestdomain, $uploaddomain, $downloaddomain, $udpdomain, $tcpdomain)
+    {
+        $api_url = self::API_APP . '/wxa/modify_domain_directly';
+        $params  = [
+            'access_token' => $access_token,
+        ];
+        if ($action == 'get') {
+            $data = [
+                'action' => $action,
+            ];
+        } else {
+            $data = [
+                'action'          => $action,
+                'requestdomain'   => $requestdomain,
+                'wsrequestdomain' => $wsrequestdomain,
+                'uploaddomain'    => $uploaddomain,
+                'downloaddomain'  => $downloaddomain,
+                'udpdomain'       => $udpdomain,
+                'tcpdomain'       => $tcpdomain,
+            ];
+        }
+        return $this->https_post($api_url, $params, json_encode($data));
+    }
+
+    /**
+     * @title 快速设置小程序业务域名
+     * @Scope
+     * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/Mini_Program_Basic_Info/setwebviewdomain_directly.html
+     * @param $access_token
+     * @param $action
+     * @param $webviewdomain
+     * @return bool|mixed|string
+     */
+    public function set_webview_domain_directly($access_token, $action, $webviewdomain)
+    {
+        $api_url = self::API_APP . '/wxa/setwebviewdomain_directly';
+        $params  = [
+            'access_token' => $access_token,
+        ];
+        if ($action == 'get') {
+            $data = [
+                'action' => $action,
+            ];
+        } else {
+            $data = [
+                'action'        => $action,
+                'webviewdomain' => $webviewdomain,
+            ];
+        }
+        return $this->https_post($api_url, $params, json_encode($data));
+    }
 }
