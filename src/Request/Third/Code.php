@@ -110,4 +110,148 @@ class Code extends ApiThird
         }
         return $this->https_post($api_url, $params, json_encode($data));
     }
+
+    /**
+     * @title 查询指定发布审核单的审核状态
+     * @Scope
+     * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/code/get_auditstatus.html
+     * @param $access_token
+     * @param $auditid
+     * @return bool|string
+     */
+    public function get_audit_status($access_token, $auditid)
+    {
+        $api_url = self::API_APP . '/wxa/get_auditstatus';
+        $params  = [
+            'access_token' => $access_token,
+        ];
+        $data    = [
+            'auditid' => $auditid
+        ];
+        return $this->https_post($api_url, $params, json_encode($data));
+    }
+
+    /**
+     * @title 查询最新一次提交的审核状态
+     * @Scope
+     * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/code/get_latest_auditstatus.html
+     * @param $access_token
+     * @return bool|string
+     */
+    public function get_last_audit_status($access_token)
+    {
+        $api_url = self::API_APP . '/wxa/get_latest_auditstatus';
+        $params  = [
+            'access_token' => $access_token,
+        ];
+        return $this->https_get($api_url, $params);
+    }
+
+    /**
+     * @title 小程序审核撤回
+     * @Scope
+     * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/code/undocodeaudit.html
+     * @param $access_token
+     * @return bool|string
+     */
+    public function undocodeaudit($access_token)
+    {
+        $api_url = self::API_APP . '/wxa/undocodeaudit';
+        $params  = [
+            'access_token' => $access_token,
+        ];
+        return $this->https_get($api_url, $params);
+    }
+
+    /**
+     * @title 发布已通过审核的小程序
+     * @Scope
+     * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/code/release.html
+     * @param $access_token
+     * @return bool|string
+     */
+    public function release($access_token)
+    {
+        $api_url = self::API_APP . '/wxa/release';
+        $params  = [
+            'access_token' => $access_token,
+        ];
+        $data    = [];
+        return $this->https_post($api_url, $params, json_encode($data));
+    }
+
+    /**
+     * @title 查询小程序版本信息
+     * @Scope
+     * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/code/get_versioninfo.html
+     * @param $access_token
+     * @return bool|string
+     */
+    public function get_version_info($access_token)
+    {
+        $api_url = self::API_APP . '/wxa/getversioninfo';
+        $params  = [
+            'access_token' => $access_token,
+        ];
+        $data    = [];
+        return $this->https_post($api_url, $params, json_encode($data));
+    }
+
+    /**
+     * @title 获取可回退的小程序版本
+     * @Scope
+     * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/code/get_history_version.html
+     * @param $access_token
+     * @param $action
+     * @return bool|string
+     */
+    public function get_history_version($access_token, $action = 'get_history_version')
+    {
+        $api_url = self::API_APP . '/wxa/revertcoderelease';
+        $params  = [
+            'access_token' => $access_token,
+            'action'       => $action,
+        ];
+        return $this->https_get($api_url, $params);
+    }
+
+    /**
+     * @title 版本回退
+     * @Scope
+     * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/code/revertcoderelease.html
+     * @param $access_token
+     * @param $app_version
+     * @return bool|string
+     */
+    public function revertcoderelease($access_token, $app_version)
+    {
+        $api_url = self::API_APP . '/wxa/revertcoderelease';
+        $params  = [
+            'access_token' => $access_token,
+        ];
+        if ($app_version) {
+            $params['app_version'] = $app_version;
+        }
+        return $this->https_get($api_url, $params);
+    }
+
+    /**
+     * @title 加急审核申请
+     * @Scope
+     * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/code/speedup_audit.html
+     * @param $access_token
+     * @param $auditid
+     * @return bool|string
+     */
+    public function speedup_audit($access_token, $auditid)
+    {
+        $api_url = self::API_APP . '/wxa/speedupaudit';
+        $params  = [
+            'access_token' => $access_token,
+        ];
+        $data    = [
+            'auditid' => $auditid
+        ];
+        return $this->https_post($api_url, $params, json_encode($data));
+    }
 }

@@ -16,9 +16,6 @@ class Template extends ApiThird
      * @Scope
      * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/ThirdParty/code_template/gettemplatedraftlist.html
      * @param $access_token
-     * @param $owner_setting
-     * @param $privacy_ver
-     * @param $setting_list
      * @return bool|mixed|string
      */
     public function get_template_draft_list($access_token)
@@ -39,7 +36,7 @@ class Template extends ApiThird
      * @param $template_type
      * @return bool|mixed|string
      */
-    public function add_to_template($access_token, $draft_id, $template_type)
+    public function add_to_template($access_token, $draft_id, $template_type = null)
     {
         $api_url = self::API_APP . '/wxa/addtotemplate';
         $params  = [
@@ -48,7 +45,7 @@ class Template extends ApiThird
         $data    = [
             'draft_id' => $draft_id,
         ];
-        if ($template_type) {
+        if (!is_null($template_type)) {
             $data['template_type'] = $template_type;
         }
         return $this->https_post($api_url, $params, json_encode($data));
@@ -62,13 +59,13 @@ class Template extends ApiThird
      * @param $template_type
      * @return bool|string
      */
-    public function get_template_list($access_token, $template_type)
+    public function get_template_list($access_token, $template_type = null)
     {
         $api_url = self::API_APP . '/wxa/gettemplatelist';
         $params  = [
             'access_token' => $access_token,
         ];
-        if ($template_type) {
+        if (!is_null($template_type)) {
             $params['template_type'] = $template_type;
         }
         return $this->https_get($api_url, $params);
