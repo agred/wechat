@@ -19,7 +19,7 @@ class Authorizer extends ApiThird
      * @param $component_appid
      * @param $offset
      * @param $count
-     * @return bool|mixed|string
+     * @return mixed
      */
     public function api_get_authorizer_list($component_access_token, $component_appid, $offset = 0, $count = 100)
     {
@@ -43,7 +43,7 @@ class Authorizer extends ApiThird
      * @param $component_appid
      * @param $authorizer_appid
      * @param $option_name
-     * @return bool|mixed|string
+     * @return mixed
      */
     public function api_get_authorizer_option($component_access_token, $component_appid, $authorizer_appid, $option_name)
     {
@@ -68,7 +68,7 @@ class Authorizer extends ApiThird
      * @param $authorizer_appid
      * @param $option_name
      * @param $option_value
-     * @return bool|mixed|string
+     * @return mixed
      */
     public function api_set_authorizer_option($component_access_token, $component_appid, $authorizer_appid, $option_name, $option_value)
     {

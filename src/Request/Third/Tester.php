@@ -15,15 +15,15 @@ class Tester extends ApiThird
      * @title 绑定微信用户为体验者
      * @Scope
      * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/Mini_Program_AdminManagement/Admin.html
-     * @param $access_token
+     * @param $authorizer_access_token
      * @param $wechatid
-     * @return bool|mixed|string
+     * @return mixed
      */
-    public function bind_tester($access_token, $wechatid)
+    public function bind_tester($authorizer_access_token, $wechatid)
     {
         $api_url = self::API_APP . '/wxa/bind_tester';
         $params  = [
-            'access_token' => $access_token,
+            'access_token' => $authorizer_access_token,
         ];
         $data    = [
             'wechatid' => $wechatid,
@@ -35,16 +35,16 @@ class Tester extends ApiThird
      * @title 解除绑定体验者
      * @Scope
      * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/Mini_Program_AdminManagement/unbind_tester.html
-     * @param $access_token
+     * @param $authorizer_access_token
      * @param $wechatid
      * @param $userstr
-     * @return bool|mixed|string
+     * @return mixed
      */
-    public function unbind_tester($access_token, $wechatid, $userstr)
+    public function unbind_tester($authorizer_access_token, $wechatid, $userstr)
     {
         $api_url = self::API_APP . '/wxa/unbind_tester';
         $params  = [
-            'access_token' => $access_token,
+            'access_token' => $authorizer_access_token,
         ];
         $data    = [];
         if ($wechatid) {
@@ -60,15 +60,15 @@ class Tester extends ApiThird
      * @title 获取体验者列表
      * @Scope
      * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/Mini_Program_AdminManagement/memberauth.html
-     * @param $access_token
+     * @param $authorizer_access_token
      * @param string $action
-     * @return bool|string
+     * @return mixed
      */
-    public function get_member_auth($access_token, $action = 'get_experiencer')
+    public function get_member_auth($authorizer_access_token, $action = 'get_experiencer')
     {
         $api_url = self::API_APP . '/wxa/memberauth';
         $params  = [
-            'access_token' => $access_token,
+            'access_token' => $authorizer_access_token,
         ];
         $data    = [
             'action' => $action,

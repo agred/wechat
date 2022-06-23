@@ -17,7 +17,7 @@ class Open extends ApiThird
      * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/account/create.html
      * @param $authorizer_access_token
      * @param $appid
-     * @return bool|mixed|string
+     * @return mixed
      */
     public function create($authorizer_access_token, $appid)
     {
@@ -39,7 +39,7 @@ class Open extends ApiThird
      * @param $authorizer_access_token
      * @param $appid
      * @param $open_appid
-     * @return bool|mixed|string
+     * @return mixed
      */
     public function bind($authorizer_access_token, $appid, $open_appid)
     {
@@ -63,7 +63,7 @@ class Open extends ApiThird
      * @param $authorizer_access_token
      * @param $appid
      * @param $open_appid
-     * @return bool|mixed|string
+     * @return mixed
      */
     public function unbind($authorizer_access_token, $appid, $open_appid)
     {
@@ -86,7 +86,7 @@ class Open extends ApiThird
      * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/account/get.html
      * @param $authorizer_access_token
      * @param $appid
-     * @return bool|mixed|string
+     * @return mixed
      */
     public function get($authorizer_access_token, $appid)
     {

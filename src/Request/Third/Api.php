@@ -17,7 +17,7 @@ class Api extends ApiThird
      * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/openApi/clear_quota.html
      * @param $access_token
      * @param $appid
-     * @return bool|mixed|string
+     * @return mixed
      */
     public function clear_quota($access_token, $appid)
     {
@@ -37,7 +37,7 @@ class Api extends ApiThird
      * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/openApi/get_api_quota.html
      * @param $access_token
      * @param $cgi_path
-     * @return bool|mixed|string
+     * @return mixed
      */
     public function get_quota($access_token, $cgi_path)
     {
@@ -57,7 +57,7 @@ class Api extends ApiThird
      * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/openApi/get_rid_info.html
      * @param $access_token
      * @param $rid
-     * @return bool|mixed|string
+     * @return mixed
      */
     public function get_rid($access_token, $rid)
     {

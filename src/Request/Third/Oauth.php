@@ -17,7 +17,7 @@ class Oauth extends ApiThird
      * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/ThirdParty/token/component_verify_ticket_service.html
      * @param $component_appid
      * @param $component_secret
-     * @return bool|mixed|string
+     * @return mixed
      */
     public function api_start_push_ticket($component_appid, $component_secret)
     {
@@ -36,7 +36,7 @@ class Oauth extends ApiThird
      * @param $component_appid
      * @param $component_appsecret
      * @param $component_verify_ticket
-     * @return bool|mixed|string
+     * @return mixed
      */
     public function api_component_token($component_appid, $component_appsecret, $component_verify_ticket)
     {
@@ -55,7 +55,7 @@ class Oauth extends ApiThird
      * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/ThirdParty/token/pre_auth_code.html
      * @param $component_access_token
      * @param $component_appid
-     * @return bool|mixed|string
+     * @return mixed
      */
     public function api_create_preauthcode($component_access_token, $component_appid)
     {
@@ -76,7 +76,7 @@ class Oauth extends ApiThird
      * @param $component_access_token
      * @param $component_appid
      * @param $authorization_code
-     * @return bool|mixed|string
+     * @return mixed
      */
     public function api_query_auth($component_access_token, $component_appid, $authorization_code)
     {
@@ -99,7 +99,7 @@ class Oauth extends ApiThird
      * @param $component_appid
      * @param $authorizer_appid
      * @param $authorizer_refresh_token
-     * @return bool|mixed|string
+     * @return mixed
      */
     public function api_authorizer_token($component_access_token, $component_appid, $authorizer_appid, $authorizer_refresh_token)
     {
@@ -122,7 +122,7 @@ class Oauth extends ApiThird
      * @param $component_access_token
      * @param $component_appid
      * @param $authorizer_appid
-     * @return bool|mixed|string
+     * @return mixed
      */
     public function api_get_authorizer_info($component_access_token, $component_appid, $authorizer_appid)
     {
@@ -142,7 +142,7 @@ class Oauth extends ApiThird
      * @Scope
      * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/Mini_Program_Basic_Info/Mini_Program_Information_Settings.html
      * @param $authorizer_access_token
-     * @return bool|mixed|string
+     * @return mixed
      */
     public function get_account_basic_info($authorizer_access_token)
     {
