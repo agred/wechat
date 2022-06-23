@@ -12,6 +12,9 @@ use Request\Kernel\DataArray;
  * @method static Request\Third\Domain Domain($options = []) 域名管理
  * @method static Request\Third\Template Template($options = []) 小程序模板管理
  * @method static Request\Third\Code Code($options = []) 小程序代码管理
+ * @method static Request\Third\Tester Tester($options = []) 成员管理
+ * @method static Request\Third\Authorizer Authorizer($options = []) 授权方账号管理
+ * @method static Request\Third\Open Open($options = []) 开放平台账号管理
  */
 class Third
 {
@@ -27,7 +30,6 @@ class Third
         $class = "\\Request\\Third\\{$name}";
 
         if (!empty($class) && class_exists($class)) {
-            $option = array_shift($arguments);
             return new $class();
         }
     }
