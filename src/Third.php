@@ -15,6 +15,7 @@ use Request\Kernel\DataArray;
  * @method static Request\Third\Tester Tester($options = []) 成员管理
  * @method static Request\Third\Authorizer Authorizer($options = []) 授权方账号管理
  * @method static Request\Third\Open Open($options = []) 开放平台账号管理
+ * @method static Request\Third\Category Category($options = []) 小程序类目管理
  */
 class Third
 {
