@@ -36,7 +36,7 @@ class Privacy extends ApiThird
         if ($setting_list) {
             $data['setting_list'] = $setting_list;
         }
-        return $this->https_post($api_url, $params, json_encode($data));
+        return $this->https_post($api_url, $params, json_encode($data, JSON_UNESCAPED_UNICODE));
     }
 
     /**
@@ -57,7 +57,7 @@ class Privacy extends ApiThird
         if ($privacy_ver) {
             $data['privacy_ver'] = $privacy_ver;
         }
-        return $this->https_post($api_url, $params, json_encode($data));
+        return $this->https_post($api_url, $params, json_encode($data, JSON_UNESCAPED_UNICODE));
     }
 
     /**
@@ -125,6 +125,6 @@ class Privacy extends ApiThird
         if ($video_list) {
             $data['video_list'] = $video_list;
         }
-        return $this->https_post($api_url, $params, json_encode($data));
+        return $this->https_post($api_url, $params, json_encode($data, JSON_UNESCAPED_UNICODE));
     }
 }

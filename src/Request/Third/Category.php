@@ -81,7 +81,7 @@ class Category extends ApiThird
         $data    = [
             'categories' => $categories
         ];
-        return $this->https_post($api_url, $params, json_encode($data));
+        return $this->https_post($api_url, $params, json_encode($data, JSON_UNESCAPED_UNICODE));
     }
 
     /**
@@ -103,7 +103,7 @@ class Category extends ApiThird
             'first'  => $first,
             'second' => $second,
         ];
-        return $this->https_post($api_url, $params, json_encode($data));
+        return $this->https_post($api_url, $params, json_encode($data, JSON_UNESCAPED_UNICODE));
     }
 
     /**
@@ -127,7 +127,7 @@ class Category extends ApiThird
             'second' => $second,
             'certicates' => $certicates,
         ];
-        return $this->https_post($api_url, $params, json_encode($data));
+        return $this->https_post($api_url, $params, json_encode($data, JSON_UNESCAPED_UNICODE));
     }
 
     /**

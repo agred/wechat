@@ -34,7 +34,7 @@ class Code extends ApiThird
             'user_version' => $user_version,
             'user_desc'    => $user_desc,
         ];
-        return $this->https_post($api_url, $params, json_encode($data));
+        return $this->https_post($api_url, $params, json_encode($data, JSON_UNESCAPED_UNICODE));
     }
 
     /**
@@ -110,7 +110,7 @@ class Code extends ApiThird
         if ($ugc_declare) {
             $data['ugc_declare'] = $ugc_declare;
         }
-        return $this->https_post($api_url, $params, json_encode($data));
+        return $this->https_post($api_url, $params, json_encode($data, JSON_UNESCAPED_UNICODE));
     }
 
     /**

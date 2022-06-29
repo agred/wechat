@@ -56,7 +56,7 @@ class Authorizer extends ApiThird
             'authorizer_appid' => $authorizer_appid,
             'option_name'      => $option_name,
         ];
-        return $this->https_post($api_url, $params, json_encode($data));
+        return $this->https_post($api_url, $params, json_encode($data, JSON_UNESCAPED_UNICODE));
     }
 
     /**
@@ -82,6 +82,6 @@ class Authorizer extends ApiThird
             'option_name'      => $option_name,
             'option_value'     => $option_value,
         ];
-        return $this->https_post($api_url, $params, json_encode($data));
+        return $this->https_post($api_url, $params, json_encode($data, JSON_UNESCAPED_UNICODE));
     }
 }
