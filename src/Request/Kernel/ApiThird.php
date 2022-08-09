@@ -9,7 +9,7 @@ namespace Request\Kernel;
  */
 class ApiThird
 {
-    const SDK_VER = '1.0.5';
+    const SDK_VER = '1.0.6';
 
     const API_APP = "https://api.weixin.qq.com";
 

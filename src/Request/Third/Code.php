@@ -172,14 +172,14 @@ class Code extends ApiThird
      * @param $authorizer_access_token
      * @return mixed
      */
-    public function release($authorizer_access_token)
+    public function release($authorizer_access_token, $data = '{}')
     {
         $api_url = self::API_APP . '/wxa/release';
         $params  = [
             'access_token' => $authorizer_access_token,
         ];
-        $data    = [];
-        return $this->https_post($api_url, $params, json_encode($data));
+        $data = $data == '{}' ? $data : json_encode($data);
+        return $this->https_post($api_url, $params, $data);
     }
 
     /**
@@ -189,14 +189,14 @@ class Code extends ApiThird
      * @param $authorizer_access_token
      * @return mixed
      */
-    public function get_version_info($authorizer_access_token)
+    public function get_version_info($authorizer_access_token, $data = '{}')
     {
         $api_url = self::API_APP . '/wxa/getversioninfo';
         $params  = [
             'access_token' => $authorizer_access_token,
         ];
-        $data    = [];
-        return $this->https_post($api_url, $params, json_encode($data));
+        $data = $data == '{}' ? $data : json_encode($data);
+        return $this->https_post($api_url, $params, $data);
     }
 
     /**
