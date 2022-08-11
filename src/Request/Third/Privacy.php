@@ -87,7 +87,7 @@ class Privacy extends ApiThird
      */
     public function get_privacy_interface($authorizer_access_token)
     {
-        $api_url = self::API_APP . '/cgi-bin/component/get_privacy_interface';
+        $api_url = self::API_APP . '/wxa/security/get_privacy_interface';
         $params  = [
             'access_token' => $authorizer_access_token,
         ];
@@ -106,7 +106,7 @@ class Privacy extends ApiThird
      * @param $video_list
      * @return mixed
      */
-    public function apply_privacy_interface($authorizer_access_token, $api_name, $content, $url_list, $pic_list, $video_list)
+    public function apply_privacy_interface($authorizer_access_token, $api_name, $content, $url_list = null, $pic_list = null, $video_list = null)
     {
         $api_url = self::API_APP . '/wxa/security/apply_privacy_interface';
         $params  = [
