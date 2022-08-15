@@ -17,24 +17,26 @@ class Privacy extends ApiThird
      * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/privacy_config/set_privacy_setting.html
      * @param $authorizer_access_token
      * @param $owner_setting
-     * @param $privacy_ver
      * @param $setting_list
+     * @param $sdk_privacy_info_list
+     * @param $privacy_ver
      * @return mixed
      */
-    public function set_privacy_setting($authorizer_access_token, $owner_setting, $privacy_ver, $setting_list)
+    public function set_privacy_setting($authorizer_access_token, $owner_setting, $setting_list, $sdk_privacy_info_list, $privacy_ver = 2)
     {
         $api_url = self::API_APP . '/cgi-bin/component/setprivacysetting';
         $params  = [
             'access_token' => $authorizer_access_token,
         ];
         $data    = [
+            'privacy_ver'   => $privacy_ver,
             'owner_setting' => $owner_setting,
         ];
-        if ($privacy_ver) {
-            $data['privacy_ver'] = $privacy_ver;
-        }
         if ($setting_list) {
             $data['setting_list'] = $setting_list;
+        }
+        if ($sdk_privacy_info_list) {
+            $data['sdk_privacy_info_list'] = $sdk_privacy_info_list;
         }
         return $this->https_post($api_url, $params, json_encode($data, JSON_UNESCAPED_UNICODE));
     }
@@ -47,16 +49,14 @@ class Privacy extends ApiThird
      * @param $privacy_ver
      * @return mixed
      */
-    public function get_privacy_setting($authorizer_access_token, $privacy_ver)
+    public function get_privacy_setting($authorizer_access_token, $privacy_ver = 2)
     {
         $api_url = self::API_APP . '/cgi-bin/component/getprivacysetting';
         $params  = [
             'access_token' => $authorizer_access_token,
+            'privacy_ver'  => $privacy_ver,
         ];
         $data    = [];
-        if ($privacy_ver) {
-            $data['privacy_ver'] = $privacy_ver;
-        }
         return $this->https_post($api_url, $params, json_encode($data, JSON_UNESCAPED_UNICODE));
     }
 
@@ -88,6 +88,22 @@ class Privacy extends ApiThird
     public function get_privacy_interface($authorizer_access_token)
     {
         $api_url = self::API_APP . '/wxa/security/get_privacy_interface';
+        $params  = [
+            'access_token' => $authorizer_access_token,
+        ];
+        return $this->https_get($api_url, $params);
+    }
+
+    /**
+     * @title 获取隐私接口检测结果
+     * @Scope
+     * @url https://developers.weixin.qq.com/doc/oplatform/openApi/OpenApiDoc/miniprogram-management/code-management/getCodePrivacyInfo.html
+     * @param $authorizer_access_token
+     * @return mixed
+     */
+    public function get_code_privacy_info($authorizer_access_token)
+    {
+        $api_url = self::API_APP . '/wxa/security/get_code_privacy_info';
         $params  = [
             'access_token' => $authorizer_access_token,
         ];
