@@ -84,9 +84,10 @@ class Code extends ApiThird
      * @param $feedback_info
      * @param $feedback_stuff
      * @param $ugc_declare
+     * @param $privacy_api_not_use
      * @return mixed
      */
-    public function submit_audit($authorizer_access_token, $item_list, $preview_info, $version_desc, $feedback_info, $feedback_stuff, $ugc_declare)
+    public function submit_audit($authorizer_access_token, $item_list, $preview_info, $version_desc, $feedback_info, $feedback_stuff, $ugc_declare, $privacy_api_not_use = true)
     {
         $api_url = self::API_APP . '/wxa/submit_audit';
         $params  = [
@@ -110,6 +111,7 @@ class Code extends ApiThird
         if ($ugc_declare) {
             $data['ugc_declare'] = $ugc_declare;
         }
+        $data['privacy_api_not_use'] = $privacy_api_not_use;
         return $this->https_post($api_url, $params, json_encode($data, JSON_UNESCAPED_UNICODE));
     }
 
