@@ -54,9 +54,10 @@ class Privacy extends ApiThird
         $api_url = self::API_APP . '/cgi-bin/component/getprivacysetting';
         $params  = [
             'access_token' => $authorizer_access_token,
-            'privacy_ver'  => $privacy_ver,
         ];
-        $data    = [];
+        $data    = [
+            'privacy_ver' => $privacy_ver
+        ];
         return $this->https_post($api_url, $params, json_encode($data, JSON_UNESCAPED_UNICODE));
     }
 
