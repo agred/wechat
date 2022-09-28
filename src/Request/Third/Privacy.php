@@ -32,7 +32,7 @@ class Privacy extends ApiThird
             'privacy_ver'   => $privacy_ver,
             'owner_setting' => $owner_setting,
         ];
-        if ($setting_list) {
+        if ($setting_list && $privacy_ver == 2) {
             $data['setting_list'] = $setting_list;
         }
         if ($sdk_privacy_info_list) {
