@@ -17,11 +17,11 @@ class Domain extends ApiThird
      * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/ThirdParty/domain/modify_server_domain.html
      * @param $component_access_token
      * @param $action
-     * @param $is_modify_published_together
      * @param $wxa_server_domain
+     * @param $is_modify_published_together
      * @return mixed
      */
-    public function modify_wxa_server_domain($component_access_token, $action, $is_modify_published_together, $wxa_server_domain)
+    public function modify_wxa_server_domain($component_access_token, $action, $wxa_server_domain = '', $is_modify_published_together = false)
     {
         $api_url = self::API_APP . '/cgi-bin/component/modify_wxa_server_domain';
         $params  = [
@@ -30,11 +30,11 @@ class Domain extends ApiThird
         $data    = [
             'action' => $action,
         ];
-        if ($is_modify_published_together) {
-            $data['is_modify_published_together'] = $is_modify_published_together;
-        }
         if ($wxa_server_domain) {
             $data['wxa_server_domain'] = $wxa_server_domain;
+        }
+        if ($is_modify_published_together) {
+            $data['is_modify_published_together'] = $is_modify_published_together;
         }
         return $this->https_post($api_url, $params, json_encode($data));
     }
@@ -44,15 +44,16 @@ class Domain extends ApiThird
      * @Scope
      * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/ThirdParty/domain/get_domain_confirmfile.html
      * @param $component_access_token
+     * @param $data
      * @return mixed
      */
-    public function get_domain_confirmfile($component_access_token)
+    public function get_domain_confirmfile($component_access_token, $data = '{}')
     {
         $api_url = self::API_APP . '/cgi-bin/component/get_domain_confirmfile';
         $params  = [
             'access_token' => $component_access_token,
         ];
-        return $this->https_post($api_url, $params);
+        return $this->https_post($api_url, $params, $data);
     }
 
     /**
@@ -61,11 +62,11 @@ class Domain extends ApiThird
      * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/ThirdParty/domain/modify_jump_domain.html
      * @param $component_access_token
      * @param $action
-     * @param $is_modify_published_together
      * @param $wxa_jump_h5_domain
+     * @param $is_modify_published_together
      * @return mixed
      */
-    public function modify_wxa_jump_domain($component_access_token, $action, $is_modify_published_together, $wxa_jump_h5_domain)
+    public function modify_wxa_jump_domain($component_access_token, $action, $wxa_jump_h5_domain = '', $is_modify_published_together = false)
     {
         $api_url = self::API_APP . '/cgi-bin/component/modify_wxa_jump_domain';
         $params  = [
@@ -74,11 +75,11 @@ class Domain extends ApiThird
         $data    = [
             'action' => $action,
         ];
-        if ($is_modify_published_together) {
-            $data['is_modify_published_together'] = $is_modify_published_together;
-        }
         if ($wxa_jump_h5_domain) {
             $data['wxa_jump_h5_domain'] = $wxa_jump_h5_domain;
+        }
+        if ($is_modify_published_together) {
+            $data['is_modify_published_together'] = $is_modify_published_together;
         }
         return $this->https_post($api_url, $params, json_encode($data));
     }
