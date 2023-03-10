@@ -9,7 +9,7 @@ namespace Request\Kernel;
  */
 class ApiThird
 {
-    const SDK_VER = '1.0.6';
+    const SDK_VER = '1.1.0';
 
     const API_APP = "https://api.weixin.qq.com";
 
@@ -24,12 +24,16 @@ class ApiThird
         return $this->response ? json_decode($this->response, true) : true;
     }
 
-    public function https_file($url, $params = [])
+    public function https_file($url, $file)
     {
-        if ($params) {
-            $url = $url . '?' . http_build_query($params);
-        }
-        return $this->https_request($url);
+        $result = $this->https_byte($url, $file);
+        return is_null(json_decode($result)) ? $result : json_decode($result, true);
+    }
+
+    public function https_upload($url, $file)
+    {
+        $result = $this->upload_byte($url, $file);
+        return is_null(json_decode($result)) ? $result : json_decode($result, true);
     }
 
     public function https_get($url, $params = [])
@@ -38,11 +42,7 @@ class ApiThird
             $url = $url . '?' . http_build_query($params);
         }
         $result = $this->https_request($url);
-        if (is_null(json_decode($result))) {
-            return $result;
-        } else {
-            return json_decode($result, true);
-        }
+        return is_null(json_decode($result)) ? $result : json_decode($result, true);
     }
 
     public function https_post($url, $params = [], $data = [])
@@ -51,11 +51,7 @@ class ApiThird
             $url = $url . '?' . http_build_query($params);
         }
         $result = $this->https_request($url, $data);
-        if (is_null(json_decode($result))) {
-            return $result;
-        } else {
-            return json_decode($result, true);
-        }
+        return is_null(json_decode($result)) ? $result : json_decode($result, true);
     }
 
     public function https_request($url, $data = null, $headers = null)
@@ -100,7 +96,7 @@ class ApiThird
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         $output = curl_exec($curl);
         curl_close($curl);
-        return json_decode($output, true);
+        return ($output);
     }
 
     public function upload_byte($url, $file)
@@ -136,8 +132,6 @@ class ApiThird
         }
         $output = curl_exec($curl);
         curl_close($curl);
-
-        $result = json_decode($output, true);
-        return $result['data'];
+        return ($output);
     }
 }

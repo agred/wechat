@@ -74,9 +74,9 @@ class Privacy extends ApiThird
         $api_url = self::API_APP . '/cgi-bin/component/uploadprivacyextfile';
         $params  = [
             'access_token' => $authorizer_access_token,
-            'file'         => $file,
         ];
-        return $this->https_file($api_url, $params);
+        $api_url = $api_url . '?' . http_build_query($params);
+        return $this->https_file($api_url, $file);
     }
 
     /**
