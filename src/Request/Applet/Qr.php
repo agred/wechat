@@ -16,16 +16,13 @@ class Qr extends ApiApplet
      * @Scope
      * @url https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/qr-code/wxacode.createQRCode.html
      * @param string $access_token
-     * @param string $path
+     * @param array $data
      */
-    public function createQRCode($access_token, $path)
+    public function createQRCode($access_token, $data = [])
     {
         $api_url = self::API_APP . '/cgi-bin/wxaapp/createwxaqrcode';
         $params  = [
             'access_token' => $access_token
-        ];
-        $data    = [
-            'path' => $path
         ];
         return $this->https_post($api_url, $params, json_encode($data));
     }
@@ -35,16 +32,13 @@ class Qr extends ApiApplet
      * @Scope
      * @url https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/qr-code/wxacode.get.html
      * @param string $access_token
-     * @param string $path
+     * @param array $data
      */
-    public function get($access_token, $path)
+    public function get($access_token, $data = [])
     {
         $api_url = self::API_APP . '/wxa/getwxacode';
         $params  = [
             'access_token' => $access_token
-        ];
-        $data    = [
-            'path' => $path
         ];
         return $this->https_post($api_url, $params, json_encode($data));
     }
@@ -54,16 +48,13 @@ class Qr extends ApiApplet
      * @Scope
      * @url https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/qr-code/wxacode.getUnlimited.html
      * @param string $access_token
-     * @param string $scene
+     * @param array $data
      */
-    public function getUnlimited($access_token, $scene)
+    public function getUnlimited($access_token, $data= [])
     {
         $api_url = self::API_APP . '/wxa/getwxacodeunlimit';
         $params  = [
             'access_token' => $access_token
-        ];
-        $data    = [
-            'scene' => $scene
         ];
         return $this->https_post($api_url, $params, json_encode($data));
     }
