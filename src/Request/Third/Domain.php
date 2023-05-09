@@ -164,7 +164,10 @@ class Domain extends ApiThird
      * @param $tcpdomain
      * @return mixed
      */
-    public function modify_domain_directly($authorizer_access_token, $action, $requestdomain, $wsrequestdomain, $uploaddomain, $downloaddomain, $udpdomain, $tcpdomain)
+    public function modify_domain_directly($authorizer_access_token, $action = 'get',
+                                           $requestdomain = null, $wsrequestdomain = null,
+                                           $uploaddomain = null, $downloaddomain = null,
+                                           $udpdomain = null, $tcpdomain = null)
     {
         $api_url = self::API_APP . '/wxa/modify_domain_directly';
         $params  = [
@@ -197,7 +200,7 @@ class Domain extends ApiThird
      * @param $webviewdomain
      * @return mixed
      */
-    public function set_webview_domain_directly($authorizer_access_token, $action, $webviewdomain)
+    public function set_webview_domain_directly($authorizer_access_token, $action = 'get', $webviewdomain = null)
     {
         $api_url = self::API_APP . '/wxa/setwebviewdomain_directly';
         $params  = [
@@ -214,5 +217,37 @@ class Domain extends ApiThird
             ];
         }
         return $this->https_post($api_url, $params, json_encode($data));
+    }
+
+    /**
+     * @title 获取发布后生效业务域名列表
+     * @Scope
+     * @url https://developers.weixin.qq.com/doc/oplatform/openApi/OpenApiDoc/miniprogram-management/domain-management/getEffectiveJumpDomain.html
+     * @param $authorizer_access_token
+     * @return mixed
+     */
+    public function get_effective_webviewdomain($authorizer_access_token)
+    {
+        $api_url = self::API_APP . '/wxa/get_effective_webviewdomain';
+        $params  = [
+            'access_token' => $authorizer_access_token,
+        ];
+        return $this->https_post($api_url, $params);
+    }
+
+    /**
+     * @title 获取发布后生效服务器域名列表
+     * @Scope
+     * @url https://developers.weixin.qq.com/doc/oplatform/openApi/OpenApiDoc/miniprogram-management/domain-management/getEffectiveServerDomain.html
+     * @param $authorizer_access_token
+     * @return mixed
+     */
+    public function get_effective_domain($authorizer_access_token)
+    {
+        $api_url = self::API_APP . '/wxa/get_effective_domain';
+        $params  = [
+            'access_token' => $authorizer_access_token,
+        ];
+        return $this->https_post($api_url, $params);
     }
 }

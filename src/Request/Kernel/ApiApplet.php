@@ -60,7 +60,7 @@ class ApiApplet
         if ($params) {
             $url = $url . '?' . http_build_query($params);
         }
-        $result = $this->https_request($url, $data);
+        $result = $this->https_request($url, 'POST', $data);
         if (is_null(json_decode($result))) {
             return $result;
         } else {
@@ -68,14 +68,16 @@ class ApiApplet
         }
     }
 
-    public function https_request($url, $data = null, $headers = null)
+    public function https_request($url, $methods = 'GET', $data = null, $headers = null)
     {
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
-        if (!empty($data)) {
+        if ($methods == 'POST') {
             curl_setopt($curl, CURLOPT_POST, 1);
+        }
+        if (!empty($data)) {
             curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
         }
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
