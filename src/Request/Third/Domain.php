@@ -44,16 +44,15 @@ class Domain extends ApiThird
      * @Scope
      * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/ThirdParty/domain/get_domain_confirmfile.html
      * @param $component_access_token
-     * @param $data
      * @return mixed
      */
-    public function get_domain_confirmfile($component_access_token, $data = '{}')
+    public function get_domain_confirmfile($component_access_token)
     {
         $api_url = self::API_APP . '/cgi-bin/component/get_domain_confirmfile';
         $params  = [
             'access_token' => $component_access_token,
         ];
-        return $this->https_post($api_url, $params, $data);
+        return $this->https_post($api_url, $params);
     }
 
     /**
@@ -98,7 +97,10 @@ class Domain extends ApiThird
      * @param $tcpdomain
      * @return mixed
      */
-    public function modify_domain($authorizer_access_token, $action, $requestdomain, $wsrequestdomain, $uploaddomain, $downloaddomain, $udpdomain, $tcpdomain)
+    public function modify_domain($authorizer_access_token, $action = 'get',
+                                  $requestdomain = null, $wsrequestdomain = null,
+                                  $uploaddomain = null, $downloaddomain = null,
+                                  $udpdomain = null, $tcpdomain = null)
     {
         $api_url = self::API_APP . '/wxa/modify_domain';
         $params  = [
@@ -131,7 +133,7 @@ class Domain extends ApiThird
      * @param $webviewdomain
      * @return mixed
      */
-    public function set_webview_domain($authorizer_access_token, $action, $webviewdomain)
+    public function set_webview_domain($authorizer_access_token, $action, $webviewdomain = null)
     {
         $api_url = self::API_APP . '/wxa/setwebviewdomain';
         $params  = [
@@ -245,6 +247,22 @@ class Domain extends ApiThird
     public function get_effective_domain($authorizer_access_token)
     {
         $api_url = self::API_APP . '/wxa/get_effective_domain';
+        $params  = [
+            'access_token' => $authorizer_access_token,
+        ];
+        return $this->https_post($api_url, $params);
+    }
+
+    /**
+     * @title 获取业务域名校验文件
+     * @Scope
+     * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/Mini_Program_Basic_Info/get_domain_confirmfile.html
+     * @param $authorizer_access_token
+     * @return mixed
+     */
+    public function get_webviewdomain_confirmfile($authorizer_access_token)
+    {
+        $api_url = self::API_APP . '/wxa/get_webviewdomain_confirmfile';
         $params  = [
             'access_token' => $authorizer_access_token,
         ];
