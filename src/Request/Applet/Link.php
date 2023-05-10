@@ -16,16 +16,13 @@ class Link extends ApiApplet
      * @Scope
      * @url https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/url-link/urllink.generate.html
      * @param string $access_token
-     * @param string $path
+     * @param array $data
      */
-    public function generate($access_token, $path)
+    public function generate($access_token, $data = [])
     {
         $api_url = self::API_APP . '/wxa/generate_urllink';
         $params  = [
             'access_token' => $access_token
-        ];
-        $data    = [
-            'path' => $path
         ];
         return $this->https_post($api_url, $params, json_encode($data));
     }
