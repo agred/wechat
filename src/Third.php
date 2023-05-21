@@ -7,6 +7,7 @@ use Request\Kernel\DataArray;
  * @package Request
  *
  * @method static Request\Third\Oauth Oauth($options = []) 授权与Token
+ * @method static Request\Third\Base Base($options = []) 基础管理
  * @method static Request\Third\Api Api($options = []) Api管理
  * @method static Request\Third\Privacy Privacy($options = []) 小程序用户隐私保护指引
  * @method static Request\Third\Domain Domain($options = []) 域名管理
@@ -27,7 +28,7 @@ class Third
      */
     public static function __callStatic($name, $arguments)
     {
-        $name  = ucfirst(strtolower($name));
+        $name = ucfirst(strtolower($name));
         $class = "\\Request\\Third\\{$name}";
 
         if (!empty($class) && class_exists($class)) {

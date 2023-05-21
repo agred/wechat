@@ -136,20 +136,4 @@ class Oauth extends ApiThird
         ];
         return $this->https_post($api_url, $params, json_encode($data));
     }
-
-    /**
-     * @title 获取小程序基本信息
-     * @Scope
-     * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/Mini_Program_Basic_Info/Mini_Program_Information_Settings.html
-     * @param $authorizer_access_token
-     * @return mixed
-     */
-    public function get_account_basic_info($authorizer_access_token)
-    {
-        $api_url = self::API_APP . '/cgi-bin/account/getaccountbasicinfo';
-        $params  = [
-            'access_token' => $authorizer_access_token,
-        ];
-        return $this->https_get($api_url, $params);
-    }
 }

@@ -70,4 +70,35 @@ class Api extends ApiThird
         ];
         return $this->https_post($api_url, $params, json_encode($data));
     }
+
+    /**
+     * @title 新增临时素材
+     * @Scope
+     * @url https://developers.weixin.qq.com/doc/offiaccount/Asset_Management/New_temporary_materials.html
+     * @param string $access_token
+     * @param string $type 媒体文件类型，分别有图片（image）、语音（voice）、视频（video），普通文件（thumb）
+     * @param string $file 上传文件
+     */
+    public function upload_media($access_token, $type, $file)
+    {
+        $api_url = self::API_APP . '/cgi-bin/media/upload?access_token=' . $access_token . '&type=' . $type;
+        return $this->https_byte($api_url, $file);
+    }
+
+    /**
+     * @title 获取临时素材
+     * @Scope
+     * @url https://developers.weixin.qq.com/doc/offiaccount/Asset_Management/Get_temporary_materials.html
+     * @param string $access_token
+     * @param string $media_id
+     */
+    public function get_media($access_token, $media_id)
+    {
+        $api_url = self::API_APP . '/cgi-bin/media/get';
+        $params = [
+            'access_token' => $access_token,
+            'media_id'     => $media_id
+        ];
+        return $this->https_file($api_url, $params);
+    }
 }
