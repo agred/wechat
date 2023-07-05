@@ -42,6 +42,27 @@ class Oauth extends ApiApplet
     }
 
     /**
+     * @title 获取稳定版接口调用凭据
+     * @Scope
+     * @param string $appid
+     * @param string $secret
+     * @param bool $force_refresh
+     * @url https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/mp-access-token/getStableAccessToken.html
+     */
+    public function getStableAccessToken($appid, $secret, $force_refresh = false)
+    {
+        $api_url = self::API_APP . '/cgi-bin/stable_token';
+        $params  = [];
+        $data    = [
+            'grant_type' => 'client_credential',
+            'appid'       => $appid,
+            'secret' => $secret,
+            'force_refresh' => $force_refresh,
+        ];
+        return $this->https_post($api_url, $params, json_encode($data));
+    }
+
+    /**
      * @title 获取硬件设备票据，5 分钟内有效
      * @Scope
      * @url https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/hardware-device/hardwareDevice.getSnTicket.html
