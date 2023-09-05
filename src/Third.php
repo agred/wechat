@@ -18,6 +18,7 @@ use Request\Kernel\DataArray;
  * @method static Request\Third\Open Open($options = []) 开放平台账号管理
  * @method static Request\Third\Category Category($options = []) 小程序类目管理
  * @method static Request\Third\Record Record($options = []) 小程序备案管理
+ * @method static Request\Third\Upload Upload($options = []) 上传素材管理
  */
 class Third
 {
