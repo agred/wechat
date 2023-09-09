@@ -16,15 +16,16 @@ class Record extends ApiThird
      * @Scope
      * @url https://developers.weixin.qq.com/doc/oplatform/openApi/OpenApiDoc/miniprogram-management/record/createIcpVerifyTask.html
      * @param $authorizer_access_token
+     * @param string[] $data
      * @return mixed
      */
-    public function create_icp_verifytask($authorizer_access_token)
+    public function create_icp_verifytask($authorizer_access_token, $data = ['action' => 'verify_task'])
     {
         $api_url = self::API_APP . '/wxa/icp/create_icp_verifytask';
         $params  = [
             'access_token' => $authorizer_access_token,
         ];
-        return $this->https_post($api_url, $params);
+        return $this->https_post($api_url, $params, json_encode($data));
     }
 
     /**
@@ -86,15 +87,16 @@ class Record extends ApiThird
      * @Scope
      * @url https://developers.weixin.qq.com/doc/oplatform/openApi/OpenApiDoc/miniprogram-management/record/cancelApplyIcpFiling.html
      * @param $authorizer_access_token
+     * @param string[] $data
      * @return mixed
      */
-    public function cancel_apply_icp_filing($authorizer_access_token)
+    public function cancel_apply_icp_filing($authorizer_access_token, $data = ['action' => 'icp_filing'])
     {
         $api_url = self::API_APP . '/wxa/icp/cancel_apply_icp_filing';
         $params  = [
             'access_token' => $authorizer_access_token,
         ];
-        return $this->https_post($api_url, $params);
+        return $this->https_post($api_url, $params, json_encode($data));
     }
 
     /**
