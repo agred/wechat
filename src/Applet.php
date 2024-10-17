@@ -13,6 +13,7 @@ use Request\Kernel\DataArray;
  * @method static Request\Applet\Tool Tool($options = []) 其他工具
  * @method static Request\Applet\Scheme Scheme($options = []) Scheme
  * @method static Request\Applet\Link Link($options = []) Link
+ * @method static Request\Applet\Nfc Nfc($options = []) Nfc
  * @method static Request\Applet\Ocr Ocr($options = []) Ocr识别
  */
 class Applet
